@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AppDRESTAPI" default="RESTAPI_jar_dev" basedir="..">
+    <property name="classes.dir"		value="src"/>
+    <property name="build.dir"			value="appBuild"/>
+    <property name="lib.dir"			value="${basedir}/lib"/> 
+    <property name="poi.lib.dir"		value="${basedir}/poiLib"/>
+    <property name="restapi.main"		value="org.appdynamics.appdrestapi.GetTimeStamps"/> 
+    <property name="license.main"               value="org.appdynamics.appdrestapi.license.CountLicenses"/>
+
+    <property name="extjars"                   value="${basedir}/extjars"/>
+    <property name="asm-3.1" 		value="${extjars}/asm-3.1"/>
+    <property name="commons-cli-1.2" 		value="${extjars}/commons-cli-1.2"/>
+    <property name="dom4j-1.6.1" 		value="${extjars}/dom4j-1.6.1"/>
+    <property name="ext.sh" 		value="${extjars}/ext.sh"/>
+    <property name="jackson-core-asl-1.9.2" 		value="${extjars}/jackson-core-asl-1.9.2"/>
+    <property name="jackson-jaxrs-1.9.2" 		value="${extjars}/jackson-jaxrs-1.9.2"/>
+    <property name="jackson-mapper-asl-1.9.2" 		value="${extjars}/jackson-mapper-asl-1.9.2"/>
+    <property name="jackson-xc-1.9.2" 		value="${extjars}/jackson-xc-1.9.2"/>
+    <property name="jersey-client-1.17.1" 		value="${extjars}/jersey-client-1.17.1"/>
+    <property name="jersey-core-1.17.1" 		value="${extjars}/jersey-core-1.17.1"/>
+    <property name="jersey-json-1.17.1" 		value="${extjars}/jersey-json-1.17.1"/>
+    <property name="jersey-server-1.17.1" 		value="${extjars}/jersey-server-1.17.1"/>
+    <property name="jersey-servlet-1.17.1" 		value="${extjars}/jersey-servlet-1.17.1"/>
+    <property name="jettison-1.1" 		value="${extjars}/jettison-1.1"/>
+    <property name="jsr173_1.0_api" 		value="${extjars}/jsr173_1.0_api"/>
+    <property name="jsr311-api-1.1.1" 		value="${extjars}/jsr311-api-1.1.1"/>
+    <property name="poi-3.9-20121203" 		value="${extjars}/poi-3.9-20121203"/>
+    <property name="poi-examples-3.9-20121203" 		value="${extjars}/poi-examples-3.9-20121203"/>
+    <property name="poi-excelant-3.9-20121203" 		value="${extjars}/poi-excelant-3.9-20121203"/>
+    <property name="poi-ooxml-3.9-20121203" 		value="${extjars}/poi-ooxml-3.9-20121203"/>
+    <property name="poi-ooxml-schemas-3.9-20121203" 		value="${extjars}/poi-ooxml-schemas-3.9-20121203"/>
+    <property name="poi-scratchpad-3.9-20121203" 		value="${extjars}/poi-scratchpad-3.9-20121203"/>
+    <property name="resolver" 		value="${extjars}/resolver"/>
+    <property name="xbean" 		value="${extjars}/xbean"/>
+    <property name="xbean_xpath" 		value="${extjars}/xbean_xpath"/>
+    <property name="xmlbeans-qname" 		value="${extjars}/xmlbeans-qname"/>
+    <property name="xmlpublic" 		value="${extjars}/xmlpublic"/>
+    <property name="RESTAPI.basename"   value="RESTAPI"/>
+    <property name="RESTAPI.version"     value="1.0.5"/>
+    <property name="RESTAPI.basename.dev"   value="RESTAPI_dev"/>
+    <property name="RESTAPI.version.dev"     value="1.0.6"/>
+    
+    
+    <path id="compile.classpath">
+	<fileset dir="${lib.dir}/">
+	    <include name="*.jar"/>
+	</fileset>
+        <fileset dir="${poi.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path> 
+    <path id="execute.classpath">
+	<fileset dir="${lib.dir}/">
+	    <include name="*.jar"/>
+	</fileset>
+	<fileset dir="${build.dir}/">
+	    <include name="*.jar"/>
+	</fileset>
+	<fileset dir="${poi.lib.dir}">
+	    <include name="*.jar"/>
+	</fileset> 
+    </path>
+
+    <target name="clean">
+	<delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init">
+	<mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+                <javac srcdir="${classes.dir}"
+                        destdir="${build.dir}"
+                        debug="on"
+                        deprecation="on"
+                        optimize="off"
+                        includes="**"
+                        target="1.6"
+                        includeantruntime="false">
+                        <classpath refid="compile.classpath"/>
+                </javac>
+    </target>
+
+    <target name="RESTAPI_jar" depends="compile">
+      <jar jarfile="${build.dir}/${RESTAPI.basename}_${RESTAPI.version}.jar">
+          <manifest>
+              <attribute name="Main-Class" value="${restapi.main}"/>
+          </manifest>
+          <fileset dir="${build.dir}">
+            <include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
+            <include name="org/appdynamics/appdrestapi/GetTimeStamps.class"/>
+            <include name="org/appdynamics/appdrestapi/agent/*.class"/>
+            <include name="org/appdynamics/appdrestapi/data/*.class"/>
+            <include name="org/appdynamics/appdrestapi/resources/*.class"/>
+            <include name="org/appdynamics/appdrestapi/util/*.class"/>
+          </fileset>
+      </jar>
+  
+    </target>
+    
+    <target name="RESTAPI_jar_dev" depends="compile">
+      <jar jarfile="${build.dir}/${RESTAPI.basename.dev}_${RESTAPI.version.dev}.jar">
+          <manifest>
+              <attribute name="Main-Class" value="${restapi.main}"/>
+          </manifest>
+          <fileset dir="${build.dir}">
+            <include name="org/appdynamics/appdrestapi/RESTAccess.class"/>
+            <include name="org/appdynamics/appdrestapi/GetTimeStamps.class"/>
+            <include name="org/appdynamics/appdrestapi/agent/*.class"/>
+            <include name="org/appdynamics/appdrestapi/data/*.class"/>
+            <include name="org/appdynamics/appdrestapi/resources/*.class"/>
+            <include name="org/appdynamics/appdrestapi/util/*.class"/>
+            <include name="org/appdynamics/appdrestapi/export/*.class"/>
+          </fileset>
+      </jar>
+  
+    </target>
+    
+</project>
