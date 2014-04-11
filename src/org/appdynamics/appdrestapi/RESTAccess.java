@@ -220,13 +220,27 @@ public class RESTAccess {
     /**
      * 
      * @param application
+     * @return 
+     */
+    public Backends getBackendsForApplication(String application){
+        try{
+            return RESTExecuter.executeBackends(auth, BackendsQuery.queryBackendsFromApps(baseURL.getControllerURL(), application));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param application
      * @param start
      * @param end
      * @return {@link PolicyViolations}
      */
     public PolicyViolations getHealthRuleViolations(String application, long start, long end){
         try{
-            return RESTExecuter.executePolicyViolations(auth, PolicyViolationQuery.queryHealthRuleViolationsSFromApps(baseURL.getControllerURL(), application,start,end));
+            return RESTExecuter.executePolicyViolations(auth, PolicyViolationQuery.queryHealthRuleViolationsFromApps(baseURL.getControllerURL(), application,start,end));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }
@@ -242,14 +256,22 @@ public class RESTAccess {
      */
     public PolicyViolations getPolicyViolations(String application, long start, long end){
         try{
-            return RESTExecuter.executePolicyViolations(auth, PolicyViolationQuery.queryPolicyViolationsSFromApps(baseURL.getControllerURL(), application, start, end));
+            return RESTExecuter.executePolicyViolations(auth, PolicyViolationQuery.queryPolicyViolationsFromApps(baseURL.getControllerURL(), application, start, end));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }
         return null;
     }
     
-    
+    /**
+     * 
+     * @param application
+     * @param eventTypes
+     * @param severities
+     * @param start
+     * @param end
+     * @return 
+     */
     public Events getEvents(String application, String eventTypes, String severities, long start, long end){
         try{
             return RESTExecuter.executeEvents(auth, EventsQuery.queryPolicyViolationsSFromApps(baseURL.getControllerURL(), application, eventTypes, severities, start, end));

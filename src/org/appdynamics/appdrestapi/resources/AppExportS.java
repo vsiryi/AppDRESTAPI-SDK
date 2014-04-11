@@ -161,7 +161,8 @@ public class AppExportS {
     public static final String CORRELATION_ENABLED="correlation-enabled";
     public static final String SUPPORTS_CORRELATION="supports-correlation";
     public static final String PRIORITY="priority";
-    public static final String EXIT_POINT_TYPE="exit-point-type";
+    public static final String EXIT_POINT_TYPE="exit-point-type";//exitPointType
+    
     
     public static final String METRIC_BASELINES="metric-baselines";
     public static final String METRIC_BASELINE="metric-baseline";
@@ -235,6 +236,12 @@ public class AppExportS {
     public static final String AFFECTED_ENTITIES="affectedEntities";
     public static final String ENTITY_DEFINITION="entity-definition";
     
+    //Backends
+    public static final String BACKENDS="backends";
+    public static final String BACKEND="backend";
+    public static final String APPLICATION_COMPONENT_NODE_ID="applicationComponentNodeId";
+    public static final String TIER_ID="tierId";
+    public static final String BC_EXIT_POINT_TYPE="exitPointType";
     
             
 }
