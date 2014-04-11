@@ -121,7 +121,7 @@ public class RESTAccess {
      * @param appId Id of the application 
      * @return String
      */
-    public String getApplicaitonExportById(int appId){
+    public String getApplicationExportById(int appId){
         try{
             return RESTExecuter.executeApplicationExportByIdQuery(auth, ApplicationExportQuery.queryApplicationExportByID(baseURL.getControllerURL(), appId));
         }catch(Exception e){
@@ -243,6 +243,16 @@ public class RESTAccess {
     public PolicyViolations getPolicyViolations(String application, long start, long end){
         try{
             return RESTExecuter.executePolicyViolations(auth, PolicyViolationQuery.queryPolicyViolationsSFromApps(baseURL.getControllerURL(), application, start, end));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    
+    public Events getEvents(String application, String eventTypes, String severities, long start, long end){
+        try{
+            return RESTExecuter.executeEvents(auth, EventsQuery.queryPolicyViolationsSFromApps(baseURL.getControllerURL(), application, eventTypes, severities, start, end));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }

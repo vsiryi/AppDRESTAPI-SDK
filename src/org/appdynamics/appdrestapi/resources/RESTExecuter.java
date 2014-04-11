@@ -301,6 +301,36 @@ public class RESTExecuter {
         
         return pvs;
     }
+    
+    public static Events executeEvents(RESTAuth auth, String query){
+        if(client == null) {
+            createConnection(auth);
+        }
+
+        
+        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("Query:\n").append(query).toString());
+        WebResource service = client.resource(query);
+        ClientResponse response = null;
+        Events evs=null;
+        try{
+            response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
+            evs= (Events) response.getEntity(Events.class);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder()
+                    .append("Exception getting entity, please insure that your query is correct. \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(". Response code ")
+                    .append(response.getStatus()).toString());
+        } 
+        
+        if(s.debugLevel > 1){
+            logger.log(Level.INFO,new StringBuilder().append("Number of events returns is ").append(evs.getEvents().size()).toString());
+        }
+        
+        if(s.debugLevel > 2) logger.log(Level.FINE,new StringBuilder().append(evs.toString()).toString());
+        
+        return evs;
+    }
+    
 
     
 }

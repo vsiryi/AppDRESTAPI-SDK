@@ -213,7 +213,7 @@ public class AppExportS {
     public static final String PAGE_CONFIG="page-config";
     public static final String PAGE_CONFIG_VERSION="page-config-version";
     
-    // Policy Violation
+    // Policy Violation & Event
     public static final String POLICY_VIOLATIONS="policy-violations";
     public static final String POLICY_VIOLATION="policy-violation";
     public static final String START_TIME_IN_MILLIS="startTimeInMillis";
@@ -226,6 +226,14 @@ public class AppExportS {
     public static final String ENTITY_TYPE="entityType";
     public static final String ENTITY_ID="entityId";
     public static final String DEEP_LINK_URL="deepLinkUrl";
+    public static final String EVENT="event";
+    public static final String EVENTS="events";
+    public static final String EVENT_TIME="eventTime";
+    public static final String ARCHIVED="archived";
+    public static final String MARKED_AS_RESOLVED="markedAsResolved";
+    public static final String MARKED_AS_READ="markedAsRead";
+    public static final String AFFECTED_ENTITIES="affectedEntities";
+    public static final String ENTITY_DEFINITION="entity-definition";
     
     
             

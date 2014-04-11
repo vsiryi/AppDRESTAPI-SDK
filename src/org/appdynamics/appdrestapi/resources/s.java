@@ -28,6 +28,7 @@ public class s {
     public static final String URL_TIERS="/tiers";
     public static final String URL_NODES="/nodes";
     public static final String URL_PROBLEMS="/problems";
+    public static final String URL_EVENTS="/events";
     public static final String URL_POLICY_VIOLATIONS="/policy-violations?";
     public static final String URL_HEALTH_RULE_VIOLATIONS="/healthrule-violations?";
     // App Agent Path
@@ -83,10 +84,14 @@ public class s {
     
     public static final String LAST_15_MINUTES="&time-range-type=BEFORE_NOW&duration-in-mins=15";
     public static final String TIME_BETWEEN="&time-range-type=BETWEEN_TIMES";
+    public static final String TIME_BETWEEN1="?time-range-type=BETWEEN_TIMES";
     public static final String TIME_START_TIME="&start-time=";
     public static final String TIME_END_TIME="&end-time=";
     public static final String NO_ROLL_UP="&rollup=false";
     public static final String XML_OUTPUT="&output=XML'";
+    
+    public static final String EVENT_TYPES="&event-types=";
+    public static final String SEVERITIES="&severities=";
     
     public static final String ID="id";
     public static final String NAME="name";
