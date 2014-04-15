@@ -18,7 +18,7 @@ import java.util.logging.Level;
  * @author soloink
  * <p>
  * The RESTAccess is a class that allows access to AppDynamics REST api. The intention
- * is to provide a easy method to to access the REST.
+ * is to provide a easy method to to access the AppDynamics Controller REST service.
  * 
  * <p>
  * Metrics : 
@@ -26,7 +26,7 @@ import java.util.logging.Level;
  * 10 minute level data after 4 hours upto 48 hours
  * 1 hour level data after 48 hours upto 365 days.
  * 
- * Working on the export
+ * 
  */
 public class RESTAccess {
     private static Logger logger=Logger.getLogger(RESTAccess.class.getName());
@@ -117,7 +117,10 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * This will return a string of the AppDynamics application based on the
+     * application id.
+     * </p>
      * @param appId Id of the application 
      * @return String
      */
@@ -133,7 +136,9 @@ public class RESTAccess {
 
     
     /**
-     * 
+     * <p>
+     * Returns the business transactions for an application name.
+     * </p>
      * @param application Name of the application
      * @return {@link BusinessTransactions}
      */
@@ -147,7 +152,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the business transactions for an application id.
+     * </p>
      * @param appId The id for the application
      * @return {@link BusinessTransactions}
      */
@@ -162,7 +169,9 @@ public class RESTAccess {
     
 
     /**
-     * 
+     * <p>
+     * Returns the tiers for an application name.
+     * </p>
      * @param application Name of the application
      * @return {@link Tiers}
      */
@@ -176,7 +185,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the tiers for an application id.
+     * </p>
      * @param application ExApplication id
      * @return {@link Tiers}
      */
@@ -190,7 +201,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the nodes for an application name.
+     * </p>
      * @param application Name of the application
      * @return {@link Nodes}
      */
@@ -204,7 +217,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the nodes for an application id.
+     * </p>
      * @param application Id of the application 
      * @return {@link Nodes}
      */
@@ -218,7 +233,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the backends for an application name.
+     * </p>
      * @param application
      * @return 
      */
@@ -232,7 +249,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the health rule violations for an application.
+     * </p>
      * @param application
      * @param start
      * @param end
@@ -249,6 +268,9 @@ public class RESTAccess {
     
     /**
      * 
+     * <p>
+     * Returns the policy violations for an application.
+     * </p>
      * @param application
      * @param start
      * @param end
@@ -264,7 +286,9 @@ public class RESTAccess {
     }
     
     /**
-     * 
+     * <p>
+     * Returns the events for an application.
+     * </p>
      * @param application
      * @param eventTypes
      * @param severities
