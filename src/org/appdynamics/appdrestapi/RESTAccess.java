@@ -159,7 +159,36 @@ public class RESTAccess {
         }
         return null;
     }
-    
+
+    /**
+     *
+     * @param application Name of the application
+     * @param btId Id of the Business Transaction
+     * @return {@link BusinessTransactions}
+     */
+    public BusinessTransactions getBTForApplication(String application,int btId){
+        try{
+            return RESTExecuter.executeBusinessTransactionQuery(auth, BusinessTransactionQuery.queryBTFromApps(baseURL.getControllerURL(), application, btId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param appId The id for the application
+     * @param btId Id of the Business Transaction
+     * @return {@link BusinessTransactions}
+     */
+    public BusinessTransactions getBTForApplication(int appId,int btId){
+        try{
+            return RESTExecuter.executeBusinessTransactionQuery(auth, BusinessTransactionQuery.queryBTFromApps(baseURL.getControllerURL(), appId, btId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
 
     /**
      * 
@@ -168,7 +197,7 @@ public class RESTAccess {
      */
     public Tiers getTiersForApplication(String application){
         try{
-            return RESTExecuter.executeTierQuery(auth, TierQuery.queryTierFromApps(baseURL.getControllerURL(), application));
+            return RESTExecuter.executeTierQuery(auth, TierQuery.queryTiersFromApps(baseURL.getControllerURL(), application));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }
@@ -182,13 +211,43 @@ public class RESTAccess {
      */
     public Tiers getTiersForApplication(int application){
         try{
-            return RESTExecuter.executeTierQuery(auth, TierQuery.queryTierFromApps(baseURL.getControllerURL(), application));
+            return RESTExecuter.executeTierQuery(auth, TierQuery.queryTiersFromApps(baseURL.getControllerURL(), application));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }
         return null;
     }
-    
+
+    /**
+     *
+     * @param application Name of the application
+     * @param tierId ID of the Tier
+     * @return {@link Tiers}
+     */
+    public Tiers getTierForApplication(String application, int tierId){
+        try{
+            return RESTExecuter.executeTierQuery(auth, TierQuery.queryTierFromApps(baseURL.getControllerURL(), application,tierId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param application ExApplication id
+     * @param tierId ID of the Tier
+     * @return {@link Tiers}
+     */
+    public Tiers getTierForApplication(int application, int tierId){
+        try{
+            return RESTExecuter.executeTierQuery(auth, TierQuery.queryTierFromApps(baseURL.getControllerURL(), application, tierId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+
     /**
      * 
      * @param application Name of the application
@@ -216,7 +275,37 @@ public class RESTAccess {
         }
         return null;
     }
-    
+
+    /**
+     *
+     * @param application Name of the application
+     * @param nodeId id of the Node
+     * @return {@link Nodes}
+     */
+    public Nodes getNodeForApplication(String application, int nodeId){
+        try{
+            return RESTExecuter.executeNodeQuery(auth, NodeQuery.queryNodeFromApps(baseURL.getControllerURL(), application,nodeId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param application Id of the application
+     * @param nodeId Id of the Node
+     * @return {@link Nodes}
+     */
+    public Nodes getNodeForApplication(int application,int nodeId){
+        try{
+            return RESTExecuter.executeNodeQuery(auth, NodeQuery.queryNodeFromApps(baseURL.getControllerURL(), application, nodeId));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+
     /**
      * 
      * @param application

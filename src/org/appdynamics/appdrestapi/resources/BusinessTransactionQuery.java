@@ -28,7 +28,20 @@ public class BusinessTransactionQuery {
         bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.F).append(s.BUSINESS_TRANSACTIONS);
         return bud.toString();
     }
-    
+
+
+    public static String queryBTFromApps(String baseURL, String application, int btId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(QueryEncoder.encode(application)).append(s.F).append(s.BUSINESS_TRANSACTIONS).append(s.F).append(btId);
+        return bud.toString();
+    }
+
+    public static String queryBTFromApps(String baseURL, int appID, int btId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.F).append(s.BUSINESS_TRANSACTIONS).append(s.F).append(btId);
+        return bud.toString();
+    }
+
     public static String queryBTAVERAGE_BLOCK_TIME_MS(String baseURL, String application, String tier, String site, long start, long end){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?

@@ -31,5 +31,17 @@ public class NodeQuery {
         bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.URL_NODES);
         return bud.toString();
     }
+
+    public static String queryNodeFromApps(String baseURL, String application,int nodeId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(QueryEncoder.encode(application)).append(s.URL_NODES).append(s.F).append(nodeId);
+        return bud.toString();
+    }
+
+    public static String queryNodeFromApps(String baseURL, int appID,int nodeId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.URL_NODES).append(s.F).append(nodeId);
+        return bud.toString();
+    }
     
 }
