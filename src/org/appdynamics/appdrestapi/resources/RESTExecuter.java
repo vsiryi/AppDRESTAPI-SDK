@@ -361,4 +361,33 @@ public class RESTExecuter {
         return bcs;
     }
     
+    public static Snapshots executeSnapshots(RESTAuth auth, String query){
+        if(client == null) {
+            createConnection(auth);
+        }
+
+        
+        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("Query:\n").append(query).toString());
+        WebResource service = client.resource(query);
+        ClientResponse response = null;
+        Snapshots rs=null;
+        try{
+            response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
+            rs= (Snapshots) response.getEntity(Snapshots.class);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder()
+                    .append("Exception getting entity, please insure that your query is correct. \nQuery:\n\t")
+                    .append(query).append("\nError:").append(e.getMessage()).append(". Response code ")
+                    .append(response.getStatus()).toString());
+        } 
+        
+        if(s.debugLevel > 1){
+            logger.log(Level.INFO,new StringBuilder().append("Number of snapshots returns is ").append(rs.getRequestDatas().size()).toString());
+        }
+        
+        if(s.debugLevel > 2) logger.log(Level.FINE,new StringBuilder().append(rs.toString()).toString());
+        
+        return rs;
+    }
+    
 }

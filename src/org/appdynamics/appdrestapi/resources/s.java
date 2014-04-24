@@ -31,6 +31,7 @@ public class s {
     public static final String URL_EVENTS="/events";
     public static final String URL_POLICY_VIOLATIONS="/policy-violations?";
     public static final String URL_HEALTH_RULE_VIOLATIONS="/healthrule-violations?";
+    public static final String URL_REQUEST_SNAPSHOTS="/request-snapshots?";
     public static final String URL_BACKENDS="/backends";
     // App Agent Path
     // BDR Big Deal Retail/metric-data?metric-path=Application Infrastructure Performance|1stTier|Agent|App|Availability&time-range-type=BEFORE_NOW&duration-in-mins=15
@@ -203,6 +204,77 @@ public class s {
     public static final String EUM_SERVER_CONNECTION_TIME_MS="|Server Connection Time (ms)";
     public static final String EUM_SYNTHETIC_REQUESTS_PER_MINUTE="|Synthetic Requests per Minute";
     
+    
+    public static final String DOT_NET_PROPERTY="dotnetProperty";
+    public static final String UNRESOLVED_CALL_IN_CALL_CHAIN="unresolvedCallInCallChain";
+    public static final String TRANSACTION_EVENTS="transactionEvents";
+    public static final String TRANSACTION_PROPERTIES="transactionProperties";
+    public static final String LOG_MESSAGES="logMessages";
+    public static final String RESPONSE_HEADERS="responseHeaders";
+    public static final String SESSION_KEYS="sessionKeys";
+    public static final String SERVER_START_TIME="serverStartTime";
+    public static final String HTTP_HEADERS="httpHeaders";
+    public static final String COOKIES="cookies";
+    public static final String BUSINESS_DATA="businessData";
+    public static final String HTTP_PARAMETERS="httpParameters";
+    public static final String ERROR_DETAILS="errorDetails";
+    public static final String ERROR_IDS="errorIDs";
+    public static final String URL="URL";
+    public static final String EXIT_CALLS_DATA_TRUNCATED="exitCallsDataTruncated";
+    public static final String DELAY_DEEP_DIVE_OFFSET="delayedDeepDiveOffSet";
+    public static final String DELAY_DEEP_DIVE="delayedDeepDive";
+    public static final String DEEP_DIVE_POLICY="deepDivePolicy";
+    public static final String DIAGNOSTIC_SESSION_GUID="diagnosticSessionGUID";
+    public static final String ERROR_SUMMARY="errorSummary";
+    public static final String SUMMARY="summary";
+    public static final String CRITICAL_THRESHOLD="criticalThreshold";
+    public static final String WARNING_THRESHOLD="warningThreshold";
+    public static final String CPU_TIME_TAKEN_IN_MILLISSECS="cpuTimeTakenInMilliSecs";
+    public static final String TIME_TAKEN_IN_MILLISECS="timeTakenInMilliSecs";
+    public static final String USER_EXPERIENCE="userExperience";
+    public static final String HAS_DEEP_DIVE_DATA="hasDeepDiveData";
+    public static final String ERROR_OCCURRED="errorOccured";
+    public static final String LOCAL_ID="localID";
+    public static final String CALL_CHAIN="callChain";
+    public static final String FIRST_IN_CHAIN="firstInChain";
+    public static final String LOCAL_START_TIME="localStartTime";
+    public static final String THREAD_NAME="threadName";
+    public static final String THREAD_ID="threadID";
+    public static final String ASYNC="async";
+    public static final String APPLICATION_COMPONENT_NODE_ID="applicationComponentNodeId";
+    public static final String APPLICATION_COMPONENT_ID="applicationComponentId";
+    public static final String APPLICATION_ID="applicationId";
+    public static final String BUSINESS_TRANSACTION_ID="businessTransactionId";
+    public static final String REQUEST_GUID="requestGUID";
+    public static final String ARCHIVED="archived";
+    public static final String REQUEST_SEGMENT_DATA="request-segment-data";
+    public static final String REQUEST_SEGMENT_DATAS="request-segment-datas";
+    
+    /* * SNAPSHOTS * 
+      
+ * <request-segment-datas>
+ * <request-segment-data>
+        <id>0</id>
+        <archived>false</archived>
+        <requestGUID>103b98e6-4b33-4a8d-9511-d572e9c828c8</requestGUID>
+        <businessTransactionId>7204</businessTransactionId>
+        <applicationId>81</applicationId>
+        <applicationComponentId>650</applicationComponentId>
+        <applicationComponentNodeId>19155</applicationComponentNodeId>
+        <async>false</async>
+        <threadID>59</threadID>
+        <threadName>http-8080-19</threadName>
+        <localStartTime>1398266842227</localStartTime>
+        <serverStartTime>1398266842227</serverStartTime>
+        <firstInChain>true</firstInChain>
+        <callChain>Component:650</callChain>
+        <localID>0</localID>
+        <errorOccured>false</errorOccured>
+        <hasDeepDiveData>true</hasDeepDiveData>
+        <userExperience>VERY_SLOW</userExperience>
+</request-segment-data>
+ * 
+     */
     
     
     /*

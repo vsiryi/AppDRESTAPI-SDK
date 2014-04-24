@@ -197,6 +197,40 @@ public class RESTAccess {
         return null;
     }
 
+    
+    /**
+     * 
+     * @param application
+     * @param start
+     * @param end
+     * @return 
+     */
+    public Snapshots getSnapshots(String application, long start, long end){
+        try{
+            return RESTExecuter.executeSnapshots(auth, SnapshotQuery.queryRequestSnapshot(baseURL.getControllerURL(), application, start, end));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param application
+     * @param start
+     * @param end
+     * @return 
+     */
+    public Snapshots getSnapshots(int application, long start, long end){
+        try{
+            return RESTExecuter.executeSnapshots(auth, SnapshotQuery.queryRequestSnapshot(baseURL.getControllerURL(), application, start, end));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    
     /**
      * <p>
      * Returns the tiers for an application name.
@@ -259,6 +293,67 @@ public class RESTAccess {
         return null;
     }
 
+    /**
+     * 
+     * @param application
+     * @param tier
+     * @return 
+     */
+    public Nodes getNodesFromTier(String application, String tier){
+        try{
+            return RESTExecuter.executeNodeQuery(auth, TierQuery.queryNodesFromTier(baseURL.getControllerURL(), application,tier));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param application
+     * @param tier
+     * @return 
+     */
+    public Nodes getNodesFromTier(int application, String tier){
+        try{
+            return RESTExecuter.executeNodeQuery(auth, TierQuery.queryNodesFromTier(baseURL.getControllerURL(), application,tier));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param application
+     * @param tier
+     * @return 
+     */
+    public Nodes getNodesFromTier(String application, int tier){
+        try{
+            return RESTExecuter.executeNodeQuery(auth, TierQuery.queryNodesFromTier(baseURL.getControllerURL(), application,tier));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     * @param application
+     * @param tier
+     * @return 
+     */
+    public Nodes getNodesFromTier(int application, int tier){
+        try{
+            return RESTExecuter.executeNodeQuery(auth, TierQuery.queryNodesFromTier(baseURL.getControllerURL(), application,tier));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    
     /**
      * <p>
      * Returns the nodes for an application name.

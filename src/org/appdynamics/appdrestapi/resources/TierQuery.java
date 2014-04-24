@@ -41,4 +41,29 @@ public class TierQuery {
         bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.URL_TIERS).append(s.F).append(tierId);
         return bud.toString();
     }
+    
+    /*  * Going to add get nodes from tier * */
+    public static String queryNodesFromTier(String baseURL, int appID, int tierId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.URL_TIERS).append(s.F).append(tierId).append(s.URL_NODES);
+        return bud.toString();
+    }
+    
+    public static String queryNodesFromTier(String baseURL, int appID, String tierId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(appID).append(s.URL_TIERS).append(s.F).append(QueryEncoder.encode(tierId)).append(s.URL_NODES);
+        return bud.toString();
+    }
+    
+    public static String queryNodesFromTier(String baseURL, String application, int tierId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(QueryEncoder.encode(application)).append(s.URL_TIERS).append(s.F).append(tierId).append(s.URL_NODES);
+        return bud.toString();
+    }
+    
+    public static String queryNodesFromTier(String baseURL, String application, String tierId){
+        StringBuilder bud = new StringBuilder();
+        bud.append(baseURL).append(s.CONTROLLER_APPS).append(QueryEncoder.encode(application)).append(s.URL_TIERS).append(s.F).append(QueryEncoder.encode(tierId)).append(s.URL_NODES);
+        return bud.toString();
+    }
 }
