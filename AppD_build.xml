@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="AppDRESTAPI" default="package" basedir="..">
+<project name="AppDRESTAPI" default="package" basedir=".">
     <property name="classes.dir"		value="src"/>
     <property name="build.dir"			value="appBuild"/>
     <property name="lib.dir"			value="${basedir}/lib"/> 
-    <property name="poi.lib.dir"		value="${basedir}/poiLib"/>
     <property name="execution.lib.dir"             value="${basedir}/execLib"/>
     <property name="restapi.main"		value="org.appdynamics.appdrestapi.GetTimeStamps"/> 
 
@@ -18,9 +17,6 @@
 	<fileset dir="${lib.dir}/">
 	    <include name="*.jar"/>
 	</fileset>
-        <fileset dir="${poi.lib.dir}">
-            <include name="*.jar"/>
-        </fileset>
     </path> 
     <path id="execute.classpath">
 	<fileset dir="${lib.dir}/">
@@ -29,9 +25,6 @@
 	<fileset dir="${build.dir}/">
 	    <include name="*.jar"/>
 	</fileset>
-	<fileset dir="${poi.lib.dir}">
-	    <include name="*.jar"/>
-	</fileset> 
     </path>
 
     <target name="clean">
@@ -99,9 +92,6 @@
             </fileset>
             <fileset dir="${build.dir}/">
                 <include name="${RESTAPI.basename}_${RESTAPI.version}.jar"/>
-            </fileset>
-            <fileset dir="${poi.lib.dir}">
-                <include name="*.jar"/>
             </fileset>
         </copy>
         
