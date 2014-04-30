@@ -255,7 +255,7 @@ public class BusinessTransactionQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.URL_BUSINESS_TRANSACTION_PERFORMANCE).append(s.URL_BUSINESS_TRANSACTIONS);
-        bud.append(tier).append(s.P).append(site).append(s.P).append(s.NUMBER_OF_SLOW_CALLS);
+        bud.append(tier).append(s.P).append(site).append(s.NUMBER_OF_SLOW_CALLS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -280,7 +280,7 @@ public class BusinessTransactionQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.URL_BUSINESS_TRANSACTION_PERFORMANCE).append(s.URL_BUSINESS_TRANSACTIONS);
-        bud.append(tier).append(s.P).append(site).append(s.P).append(s.NUMBER_OF_VERY_SLOW_CALLS);
+        bud.append(tier).append(s.P).append(site).append(s.NUMBER_OF_VERY_SLOW_CALLS);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
@@ -305,7 +305,7 @@ public class BusinessTransactionQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.URL_BUSINESS_TRANSACTION_PERFORMANCE).append(s.URL_BUSINESS_TRANSACTIONS);
-        bud.append(tier).append(s.P).append(site).append(s.P).append(s.STALL_COUNT);
+        bud.append(tier).append(s.P).append(site).append(s.STALL_COUNT);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
