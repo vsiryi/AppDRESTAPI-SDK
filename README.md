@@ -5,16 +5,19 @@ The RESTAccess is a solution that allows access to AppDynamics' REST api. The in
 is to provide a easy and a standard method to to access the AppDynamics Controller REST
 service. When developers working with the REST API they tend to write their own REST
 client using either Jersey libraries or base java IO classes. The RESTAccess solution 
-relies on core class is org.appdynamics.appdrestapi.RESTAccess.
+relies on a core class org.appdynamics.appdrestapi.RESTAccess.
 
 
 Requirements:
 ------------
-The 
+Requires ant to build the package
 
 Building:
 --------
-After getting the source package
+1. Fork the Repo to local machine
+2. Run ant -f AppD_build.xml
+
+Add the execLib folder to your classpath for use with any of your projects
 
 Usage:
 -----
