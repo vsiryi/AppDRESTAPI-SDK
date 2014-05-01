@@ -205,7 +205,7 @@ public class BusinessTransactionQuery {
         // This has to be encoded otherwise the query will fail.
         StringBuilder bud = new StringBuilder();
         bud.append(s.URL_BUSINESS_TRANSACTION_PERFORMANCE).append(s.URL_BUSINESS_TRANSACTIONS);
-        bud.append(tier).append(s.P).append(site).append(s.P).append(s.ERRORS_PER_MINUTE);
+        bud.append(tier).append(s.P).append(site).append(s.ERRORS_PER_MINUTE);
         val.append(QueryEncoder.encode(bud.toString()));  
         
         //val.append(s.LAST_15_MINUTES);
