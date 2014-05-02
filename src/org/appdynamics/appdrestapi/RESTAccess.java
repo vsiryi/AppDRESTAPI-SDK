@@ -133,7 +133,51 @@ public class RESTAccess {
         return null;
     }
     
+    
 
+    /**
+     * <p>
+     * This will return the list of the metric path bases, for example 'Business Transaction Performance" 
+     * </p>
+     * @param application
+     * @return 
+     */
+    public MetricItems getBaseMetricList(String application){
+        try{
+            return RESTExecuter.executeMetricItems(auth, MetricItemQuery.queryMetricList(baseURL.getControllerURL(), application));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    /**
+     * <p>
+     * This will allow the user to provide the metric path they wish to walk. The paths need to be separated by the character '|'
+     * </p>
+     * @param application
+     * @param metricPath
+     * @return 
+     */
+    public MetricItems getBaseMetricListPath(String application, String metricPath){
+        try{
+            return RESTExecuter.executeMetricItems(auth, MetricItemQuery.queryMetricListForPath(baseURL.getControllerURL(), application, metricPath));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+    }
+    
+    public MetricDatas getRESTGenericMetricQuery(String application, String metricPath, long start, long end){
+        try{
+            return RESTExecuter.executeMetricQuery(auth, MetricItemQuery.queryGeneralMetricQuery(baseURL.getControllerURL(), application, metricPath, start, end));
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        
+        return null;
+    }
+    
     
     /**
      * <p>

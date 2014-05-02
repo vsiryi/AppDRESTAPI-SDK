@@ -12,8 +12,9 @@ import java.io.Console;
  */
 public class CryptoTool {
     /*
-     *  This is going to be the password for the key plesae after the first 8 characters you take the next 10 for the key:
-     * @m1C5!t00L
+     *  This is going to be the password for the key, the key start after the first 8 characters
+     * and extends for 10 characters. To change it change the following characters to yourown.
+     *                   @m1C5!t00L
      */
     private static final String myKey="a3ApPD4H@m1C5!t00L";
     

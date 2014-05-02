@@ -4,6 +4,11 @@
  */
 package org.appdynamics.appdrestapi.data;
 
+import org.appdynamics.appdrestapi.resources.AppExportS;
+import org.appdynamics.appdrestapi.resources.s;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
 /**
  *
  * @author soloink
@@ -14,7 +19,7 @@ public class MetricItem {
 
     public MetricItem(){}
     
-    
+    @XmlElement(name=s.TYPE)
     public String getType() {
         return type;
     }
@@ -23,6 +28,7 @@ public class MetricItem {
         this.type = type;
     }
 
+    @XmlElement(name=s.NAME)
     public String getName() {
         return name;
     }
@@ -31,5 +37,14 @@ public class MetricItem {
         this.name = name;
     }
     
+    
+    @Override
+    public String toString(){
+        StringBuilder bud = new StringBuilder();
+        bud.append(AppExportS.L1).append(s.METRIC_ITEM);
+        bud.append(AppExportS.L2).append(s.NAME).append(AppExportS.VE).append(name);
+        bud.append(AppExportS.L2).append(s.TYPE).append(AppExportS.VE).append(type);
+        return bud.toString();
+    }
     
 }

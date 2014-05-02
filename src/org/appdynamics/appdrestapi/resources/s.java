@@ -25,6 +25,7 @@ public class s {
     public static final String COLON=":";
     public static final String P="|";
     public static final String F="/";
+    public static final String Q="?";
     public static final String URL_TIERS="/tiers";
     public static final String URL_NODES="/nodes";
     public static final String URL_PROBLEMS="/problems";
@@ -33,6 +34,7 @@ public class s {
     public static final String URL_HEALTH_RULE_VIOLATIONS="/healthrule-violations?";
     public static final String URL_REQUEST_SNAPSHOTS="/request-snapshots?";
     public static final String URL_BACKENDS="/backends";
+    public static final String URL_METRIC_LIST="/metrics";
     // App Agent Path
     // BDR Big Deal Retail/metric-data?metric-path=Application Infrastructure Performance|1stTier|Agent|App|Availability&time-range-type=BEFORE_NOW&duration-in-mins=15
     // {Application_Name}/metric-data?metric-path=Application Infrastructure Performance|{tier}|Agent|App|Availability&time-rante-type={type}&duration-in-mins={time}
@@ -77,7 +79,7 @@ public class s {
     public static final String JVM_GARBAGE_COLLECTION_NUMBER_OF_MAJOR_COLLECTION_PER_MIN="Number of Major Collections Per Min";
     public static final String JVM_GARBAGE_COLLECTION_NUMBER_OF_MINOR_COLLECTIONS_PER_MIN="Number of Minor Collections Per Min";
     public static final String JVM_MEMORY_HEAP="Heap|";
-    public static final String JVM_MEMORY_NON_HEAP="Non-Heap";
+    public static final String JVM_MEMORY_NON_HEAP="Non-Heap|";
     public static final String JVM_MEMORY_HEAP_COMMITED_MB="Committed (MB)";
     public static final String JVM_MEMORY_HEAP_CURRENT_USAGE_MB="Current Usage (MB)";
     public static final String JVM_MEMORY_HEAP_MAX_AVAILABLE_MB="Max Available (MB)";
@@ -104,6 +106,10 @@ public class s {
     public static final String METRIC_DATA="metric-data";
     public static final String METRIC_PATH="metricPath";
     public static final String FREQUENCY="frequency";
+    public static final String METRIC_ITEM="metric-item";
+    public static final String METRIC_ITEMS="metric-items";
+    public static final String URL_METRIC_PATH_LIST="?metric-path=";
+    
     
     public static final String METRIC_VALUES="metricValues";
     public static final String METRIC_VALUE="metric-value";
