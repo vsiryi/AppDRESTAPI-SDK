@@ -15,7 +15,7 @@ package org.appdynamics.appdrestapi.resources;
 public class HardwareResourcesMetricQuery {
     
     // CPU Busy for the Tier
-    public static String queryHDTierCPUBusy(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierCPUBusy(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -31,13 +31,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeCPUBusy(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeCPUBusy(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -54,13 +54,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierCPUIdle(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierCPUIdle(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -76,13 +76,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeCPUIdle(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeCPUIdle(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -99,13 +99,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierCPUStolen(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierCPUStolen(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -121,13 +121,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeCPUStolen(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeCPUStolen(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -144,14 +144,14 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
     /* ***************** Disk ************************** */
-    public static String queryHDTierDisksKBReadPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierDisksKBReadPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -167,13 +167,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeDisksKBReadPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeDisksKBReadPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -190,13 +190,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierDisksKBWrittenPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierDisksKBWrittenPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -212,13 +212,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeDisksKBWrittenPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeDisksKBWrittenPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -235,13 +235,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierDisksReadPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierDisksReadPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -257,13 +257,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeDisksReadPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeDisksReadPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -280,13 +280,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierDisksWritesPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierDisksWritesPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -302,13 +302,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeDisksWritesPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeDisksWritesPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -325,14 +325,14 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
     /* ***************** Memory ************************ */
-    public static String queryHDTierMemoryFreePerc(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierMemoryFreePerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -348,13 +348,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeMemoryFreePerc(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeMemoryFreePerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -371,13 +371,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierMemoryFreeMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierMemoryFreeMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -393,13 +393,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeMemoryFreeMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeMemoryFreeMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -416,13 +416,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierMemoryTotalMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierMemoryTotalMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -438,13 +438,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeMemoryTotalMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeMemoryTotalMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -461,13 +461,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierMemoryUsedPerc(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierMemoryUsedPerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -483,13 +483,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeMemoryUsedPerc(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeMemoryUsedPerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -506,13 +506,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierMemoryUsedMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierMemoryUsedMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -528,13 +528,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeMemoryUsedMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeMemoryUsedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -551,7 +551,7 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
@@ -560,7 +560,7 @@ public class HardwareResourcesMetricQuery {
     
     
     /* ***************** Network *********************** */
-    public static String queryHDTierNetworkIncomingKB(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkIncomingKB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -576,13 +576,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingKB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkIncomingKB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -599,13 +599,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkIncomingKBPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkIncomingKBPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -621,13 +621,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingKBPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkIncomingKBPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -644,13 +644,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkIncomingPackets(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkIncomingPackets(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -666,13 +666,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingPackets(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkIncomingPackets(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -689,13 +689,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -711,13 +711,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkIncomingPacketsPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -734,13 +734,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkOutgoingKB(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkOutgoingKB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -756,13 +756,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkOutgoingKB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkOutgoingKB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -779,13 +779,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkOutgoingKBPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkOutgoingKBPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -801,13 +801,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkOutgoingKBPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkOutgoingKBPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -824,13 +824,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkOutgoingPackets(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkOutgoingPackets(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -846,13 +846,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkOutgoingPackets(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkOutgoingPackets(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -869,13 +869,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDTierNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, long start, long end){
+    public static String queryHDTierNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -891,13 +891,13 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryHDNodeNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryHDNodeNetworkOutgoingPacketsPerSec(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -914,7 +914,7 @@ public class HardwareResourcesMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();

@@ -168,9 +168,9 @@ public class RESTAccess {
         return null;
     }
     
-    public MetricDatas getRESTGenericMetricQuery(String application, String metricPath, long start, long end){
+    public MetricDatas getRESTGenericMetricQuery(String application, String metricPath, long start, long end, boolean rollup){
         try{
-            return RESTExecuter.executeMetricQuery(auth, MetricItemQuery.queryGeneralMetricQuery(baseURL.getControllerURL(), application, metricPath, start, end));
+            return RESTExecuter.executeMetricQuery(auth, MetricItemQuery.queryGeneralMetricQuery(baseURL.getControllerURL(), application, metricPath, start, end,rollup));
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
         }
@@ -533,7 +533,7 @@ public class RESTAccess {
         return null;
     }
     
-    /**
+        /**
      * Returns MetricData that can be parsed 
      * Case statement to determine Query string. Possible Results
      * @param queryIndex Index of the type of query to run
@@ -595,153 +595,219 @@ public class RESTAccess {
      * <p>
      */
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, long start, long end){
+        return getRESTMetricQuery(queryIndex, application, tier, start, end, false);
+    }
+    
+    /**
+     * Returns MetricData that can be parsed 
+     * Case statement to determine Query string. Possible Results
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup
+     * @return {@link MetricDatas}
+     * 
+     * <p>
+     * <br/>Index 0  : queyrAgentTierAppAgentAvailability
+     * <br/>Index 1  : queryAgentTierMachineAgentAvailability
+     * <br/>Index 2  : queryHDTierCPUBusy
+     * <br/>Index 3  : queryHDTierCPUIdle
+     * <br/>Index 4  : queryHDTierCPUStolen
+     * <br/>Index 5  : queryHDTierDisksKBReadPerSec
+     * <br/>Index 6  : queryHDTierDisksKBWrittenPerSec
+     * <br/>Index 7  : queryHDTierDisksReadPerSec
+     * <br/>Index 8  : queryHDTierDisksWritesPerSec
+     * <br/>Index 9  : queryHDTierMemoryFreePerc
+     * <br/>Index 10 : queryHDTierMemoryFreeMB
+     * <br/>Index 11 : queryHDTierMemoryTotalMB
+     * <br/>Index 12 : queryHDTierMemoryUsedPerc
+     * <br/>Index 13 : queryHDTierMemoryUsedMB
+     * <br/>Index 14 : queryHDTierNetworkIncomingKB
+     * <br/>Index 15 : queryHDTierNetworkIncomingKBPerSec
+     * <br/>Index 16 : queryHDTierNetworkIncomingPackets
+     * <br/>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
+     * <br/>Index 18 : queryHDTierNetworkOutgoingKB
+     * <br/>Index 19 : queryHDTierNetworkOutgoingKBPerSec
+     * <br/>Index 20 : queryHDTierNetworkOutgoingPackets
+     * <br/>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
+     * <br/>Index 22 : queryJVMTierProcessCPUBurntMSPerMin
+     * <br/>Index 23 : queryJVMTierProcessCPUUsagePerc
+     * <br/>Index 24 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
+     * <br/>Index 25 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
+     * <br/>Index 26 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
+     * <br/>Index 27 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+     * <br/>Index 28 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+     * <br/>Index 29 : queryJVMTierMemoryHeapCommittedMB
+     * <br/>Index 30 : queryJVMTierMemoryHeapCurrentUsageMB
+     * <br/>Index 31 : queryJVMTierMemoryHeapMaxAvailableMB
+     * <br/>Index 32 : queryJVMTierMemoryHeapUsedPerc
+     * <br/>Index 33 : queryJVMTierMemoryNonHeapCommittedMB
+     * <br/>Index 34 : queryJVMTierMemoryNonHeapCurrentUsageMB
+     * <br/>Index 35 : queryJVMTierMemoryNonHeapMaxAvailableMB
+     * <br/>Index 36 : queryJVMTierMemoryNonHeapUsedPerc
+     * <br/>Index 37 : queryJVMTierThreadsCurrentNoOfThreads
+     * <br/>Index 38 : queryOAPTierStallCount
+     * <br/>Index 39 : queryOAPTierNumberOfVerySlowCalls
+     * <br/>Index 40 : queryOAPTierNumberOfSlowCalls
+     * <br/>Index 41 : queryOAPTierInfrastructureErrorsPerMinute
+     * <br/>Index 42 : queryOAPTierHttpErrorCodesPerMinute
+     * <br/>Index 43 : queryOAPTierExceptionsPerMinute
+     * <br/>Index 44 : queryOAPTierErrorsPerMinute
+     * <br/>Index 45 : queryOAPTierErrorPageRedirectsPerMinute
+     * <br/>Index 46 : queryOAPTierCallsPerMinute
+     * <br/>Index 47 : queryOAPTierAvgResponseTimeMS
+     * <p>
+     */
+    public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                query=mq.queryAgentTierAppAgentAvailability(tier, start, end);
+                query=mq.queryAgentTierAppAgentAvailability(tier, start, end, rollup);
                 break;
             case 1:
-                query=mq.queryAgentTierMachineAgentAvailability(tier, start, end);
+                query=mq.queryAgentTierMachineAgentAvailability(tier, start, end, rollup);
                 break;
             case 2:
-                query=mq.queryHDTierCPUBusy(tier, start, end);
+                query=mq.queryHDTierCPUBusy(tier, start, end, rollup);
                 break;
             case 3:
-                query=mq.queryHDTierCPUIdle(tier, start, end);
+                query=mq.queryHDTierCPUIdle(tier, start, end, rollup);
                 break;
             case 4:
-                query=mq.queryHDTierCPUStolen(tier, start, end);
+                query=mq.queryHDTierCPUStolen(tier, start, end, rollup);
                 break;
             case 5:
-                query=mq.queryHDTierDisksKBReadPerSec(tier, start, end);
+                query=mq.queryHDTierDisksKBReadPerSec(tier, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryHDTierDisksKBWrittenPerSec(tier, start, end);
+                query=mq.queryHDTierDisksKBWrittenPerSec(tier, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryHDTierDisksReadPerSec(tier, start, end);
+                query=mq.queryHDTierDisksReadPerSec(tier, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryHDTierDisksWritesPerSec(tier, start, end);
+                query=mq.queryHDTierDisksWritesPerSec(tier, start, end, rollup);
                 break;
             case 9:
-                query=mq.queryHDTierMemoryFreePerc(tier, start, end);
+                query=mq.queryHDTierMemoryFreePerc(tier, start, end, rollup);
                 break;
             case 10:
-                query=mq.queryHDTierMemoryFreeMB(tier, start, end);
+                query=mq.queryHDTierMemoryFreeMB(tier, start, end, rollup);
                 break;
             case 11:
-                query=mq.queryHDTierMemoryTotalMB(tier, start, end);
+                query=mq.queryHDTierMemoryTotalMB(tier, start, end, rollup);
                 break;
             case 12:
-                query=mq.queryHDTierMemoryUsedPerc(tier, start, end);
+                query=mq.queryHDTierMemoryUsedPerc(tier, start, end, rollup);
                 break;
             case 13:
-                query=mq.queryHDTierMemoryUsedMB(tier, start, end);
+                query=mq.queryHDTierMemoryUsedMB(tier, start, end, rollup);
                 break;
             case 14:
-                query=mq.queryHDTierNetworkIncomingKB(tier, start, end);
+                query=mq.queryHDTierNetworkIncomingKB(tier, start, end, rollup);
                 break;
             case 15:
-                query=mq.queryHDTierNetworkIncomingKBPerSec(tier, start, end);
+                query=mq.queryHDTierNetworkIncomingKBPerSec(tier, start, end, rollup);
                 break;
             case 16:
-                query=mq.queryHDTierNetworkIncomingPackets(tier, start, end);
+                query=mq.queryHDTierNetworkIncomingPackets(tier, start, end, rollup);
                 break;
             case 17:
-                query=mq.queryHDTierNetworkIncomingPacketsPerSec(tier, start, end);
+                query=mq.queryHDTierNetworkIncomingPacketsPerSec(tier, start, end, rollup);
                 break;
             case 18:
-                query=mq.queryHDTierNetworkOutgoingKB(tier, start, end);
+                query=mq.queryHDTierNetworkOutgoingKB(tier, start, end, rollup);
                 break;
             case 19:
-                query=mq.queryHDTierNetworkOutgoingKBPerSec(tier, start, end);
+                query=mq.queryHDTierNetworkOutgoingKBPerSec(tier, start, end, rollup);
                 break;
             case 20:
-                query=mq.queryHDTierNetworkOutgoingPackets(tier, start, end);
+                query=mq.queryHDTierNetworkOutgoingPackets(tier, start, end, rollup);
                 break;
             case 21:
-                query=mq.queryHDTierNetworkOutgoingPacketsPerSec(tier, start, end);
+                query=mq.queryHDTierNetworkOutgoingPacketsPerSec(tier, start, end, rollup);
                 break;
             case 22:
-                query=mq.queryJVMTierProcessCPUBurntMSPerMin(tier, start, end);
+                query=mq.queryJVMTierProcessCPUBurntMSPerMin(tier, start, end, rollup);
                 break;
             case 23:
-                query=mq.queryJVMTierProcessCPUUsagePerc(tier, start, end);
+                query=mq.queryJVMTierProcessCPUUsagePerc(tier, start, end, rollup);
                 break;
             case 24:
-                query=mq.queryJVMTierGarbageCollectionGCTimeSpentPerMin(tier, start, end);
+                query=mq.queryJVMTierGarbageCollectionGCTimeSpentPerMin(tier, start, end, rollup);
                 break;
             case 25:
-                query=mq.queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(tier, start, end);
+                query=mq.queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(tier, start, end, rollup);
                 break;
             case 26:
-                query=mq.queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(tier, start, end);
+                query=mq.queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(tier, start, end, rollup);
                 break;
             case 27:
-                query=mq.queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, start, end);
+                query=mq.queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, start, end, rollup);
                 break;
             case 28:
-                query=mq.queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, start, end);
+                query=mq.queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, start, end, rollup);
                 break;
             case 29:
-                query=mq.queryJVMTierMemoryHeapCommittedMB(tier, start, end);
+                query=mq.queryJVMTierMemoryHeapCommittedMB(tier, start, end, rollup);
                 break;
             case 30:
-                query=mq.queryJVMTierMemoryHeapCurrentUsageMB(tier, start, end);
+                query=mq.queryJVMTierMemoryHeapCurrentUsageMB(tier, start, end, rollup);
                 break;
             case 31:
-                query=mq.queryJVMTierMemoryHeapMaxAvailableMB(tier, start, end);
+                query=mq.queryJVMTierMemoryHeapMaxAvailableMB(tier, start, end, rollup);
                 break;
             case 32:
-                query=mq.queryJVMTierMemoryHeapUsedPerc(tier, start, end);
+                query=mq.queryJVMTierMemoryHeapUsedPerc(tier, start, end, rollup);
                 break;
             case 33:
-                query=mq.queryJVMTierMemoryNonHeapCommittedMB(tier, start, end);
+                query=mq.queryJVMTierMemoryNonHeapCommittedMB(tier, start, end, rollup);
                 break;
             case 34:
-                query=mq.queryJVMTierMemoryNonHeapCurrentUsageMB(tier, start, end);
+                query=mq.queryJVMTierMemoryNonHeapCurrentUsageMB(tier, start, end, rollup);
                 break;
             case 35:
-                query=mq.queryJVMTierMemoryNonHeapMaxAvailableMB(tier, start, end);
+                query=mq.queryJVMTierMemoryNonHeapMaxAvailableMB(tier, start, end, rollup);
                 break;
             case 36:
-                query=mq.queryJVMTierMemoryNonHeapUsedPerc(tier, start, end);
+                query=mq.queryJVMTierMemoryNonHeapUsedPerc(tier, start, end, rollup);
                 break;
             case 37:
-                query=mq.queryJVMTierThreadsCurrentNoOfThreads(tier, start, end);
+                query=mq.queryJVMTierThreadsCurrentNoOfThreads(tier, start, end, rollup);
                 break;
             case 38 :
-		query=mq.queryOAPTierStallCount(tier, start, end);
+		query=mq.queryOAPTierStallCount(tier, start, end, rollup);
 		break;
 	    case 39 :
-		query=mq.queryOAPTierNumberOfVerySlowCalls(tier, start, end);
+		query=mq.queryOAPTierNumberOfVerySlowCalls(tier, start, end, rollup);
 		break;
 	    case 40 :
-		query=mq.queryOAPTierNumberOfSlowCalls(tier, start, end);
+		query=mq.queryOAPTierNumberOfSlowCalls(tier, start, end, rollup);
 		break;
 	    case 41 :
-		query=mq.queryOAPTierInfrastructureErrorsPerMinute(tier, start, end);
+		query=mq.queryOAPTierInfrastructureErrorsPerMinute(tier, start, end, rollup);
 		break;
 	    case 42 :
-		query=mq.queryOAPTierHttpErrorCodesPerMinute(tier, start, end);
+		query=mq.queryOAPTierHttpErrorCodesPerMinute(tier, start, end, rollup);
 		break;
 	    case 43 :
-		query=mq.queryOAPTierExceptionsPerMinute(tier, start, end);
+		query=mq.queryOAPTierExceptionsPerMinute(tier, start, end, rollup);
 		break;
 	    case 44 :
-		query=mq.queryOAPTierErrorsPerMinute(tier, start, end);
+		query=mq.queryOAPTierErrorsPerMinute(tier, start, end, rollup);
 		break;
 	    case 45 :
-		query=mq.queryOAPTierErrorPageRedirectsPerMinute(tier, start, end);
+		query=mq.queryOAPTierErrorPageRedirectsPerMinute(tier, start, end, rollup);
 		break;
 	    case 46 :
-		query=mq.queryOAPTierCallsPerMinute(tier, start, end);
+		query=mq.queryOAPTierCallsPerMinute(tier, start, end, rollup);
 		break;
 	    case 47 :
-		query=mq.queryOAPTierAvgResponseTimeMS(tier, start, end);
+		query=mq.queryOAPTierAvgResponseTimeMS(tier, start, end, rollup);
 		break;
             
             default:
@@ -762,6 +828,7 @@ public class RESTAccess {
         return null;
         
     }
+    
     
     /**
      * Returns MetricData that can be parsed 
@@ -826,154 +893,221 @@ public class RESTAccess {
      * <p>
      */
     public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, String node, long start, long end){
+        return getRESTMetricQuery(queryIndex, application, tier, node, start, end, false);
+    }
+    
+    /**
+     * Returns MetricData that can be parsed 
+     * Case statement to determine Query string. Possible Results
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param node Name of the node which holds the metric
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Boolean
+     * @return {@link MetricDatas}
+     * <p>
+     * <br/>Index 0  : queyrAgentTierAppAgentAvailability
+     * <br/>Index 1  : queryAgentTierMachineAgentAvailability
+     * <br/>Index 2  : queryHDTierCPUBusy
+     * <br/>Index 3  : queryHDTierCPUIdle
+     * <br/>Index 4  : queryHDTierCPUStolen
+     * <br/>Index 5  : queryHDTierDisksKBReadPerSec
+     * <br/>Index 6  : queryHDTierDisksKBWrittenPerSec
+     * <br/>Index 7  : queryHDTierDisksReadPerSec
+     * <br/>Index 8  : queryHDTierDisksWritesPerSec
+     * <br/>Index 9  : queryHDTierMemoryFreePerc
+     * <br/>Index 10 : queryHDTierMemoryFreeMB
+     * <br/>Index 11 : queryHDTierMemoryTotalMB
+     * <br/>Index 12 : queryHDTierMemoryUsedPerc
+     * <br/>Index 13 : queryHDTierMemoryUsedMB
+     * <br/>Index 14 : queryHDTierNetworkIncomingKB
+     * <br/>Index 15 : queryHDTierNetworkIncomingKBPerSec
+     * <br/>Index 16 : queryHDTierNetworkIncomingPackets
+     * <br/>Index 17 : queryHDTierNetworkIncomingPacketsPerSec
+     * <br/>Index 18 : queryHDTierNetworkOutgoingKB
+     * <br/>Index 19 : queryHDTierNetworkOutgoingKBPerSec
+     * <br/>Index 20 : queryHDTierNetworkOutgoingPackets
+     * <br/>Index 21 : queryHDTierNetworkOutgoingPacketsPerSec
+     * <br/>Index 22 : queryJVMTierProcessCPUBurntMSPerMin
+     * <br/>Index 23 : queryJVMTierProcessCPUUsagePerc
+     * <br/>Index 24 : queryJVMTierGarbageCollectionGCTimeSpentPerMin
+     * <br/>Index 25 : queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin
+     * <br/>Index 26 : queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin
+     * <br/>Index 27 : queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin
+     * <br/>Index 28 : queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin
+     * <br/>Index 29 : queryJVMTierMemoryHeapCommittedMB
+     * <br/>Index 30 : queryJVMTierMemoryHeapCurrentUsageMB
+     * <br/>Index 31 : queryJVMTierMemoryHeapMaxAvailableMB
+     * <br/>Index 32 : queryJVMTierMemoryHeapUsedPerc
+     * <br/>Index 33 : queryJVMTierMemoryNonHeapCommittedMB
+     * <br/>Index 34 : queryJVMTierMemoryNonHeapCurrentUsageMB
+     * <br/>Index 35 : queryJVMTierMemoryNonHeapMaxAvailableMB
+     * <br/>Index 36 : queryJVMTierMemoryNonHeapUsedPerc
+     * <br/>Index 37 : queryJVMTierThreadsCurrentNoOfThreads
+     * <br/>Index 38 : queryOAPTierStallCount
+     * <br/>Index 39 : queryOAPTierNumberOfVerySlowCalls
+     * <br/>Index 40 : queryOAPTierNumberOfSlowCalls
+     * <br/>Index 41 : queryOAPTierInfrastructureErrorsPerMinute
+     * <br/>Index 42 : queryOAPTierHttpErrorCodesPerMinute
+     * <br/>Index 43 : queryOAPTierExceptionsPerMinute
+     * <br/>Index 44 : queryOAPTierErrorsPerMinute
+     * <br/>Index 45 : queryOAPTierErrorPageRedirectsPerMinute
+     * <br/>Index 46 : queryOAPTierCallsPerMinute
+     * <br/>Index 47 : queryOAPTierAvgResponseTimeMS
+     * <p>
+     */
+    public MetricDatas getRESTMetricQuery(int queryIndex, String application, String tier, String node, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.INFO,new StringBuilder().append("\nQueryIndex sent ").append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).append(" node ").append(node).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
                 // Agent query
-                query=mq.queryAgentNodeAppAgentAvailability(tier, node, start, end);
+                query=mq.queryAgentNodeAppAgentAvailability(tier, node, start, end, rollup);
                 break;
             case 1:
-                query=mq.queryAgentNodeMachineAgentAvailability(tier, node, start, end);
+                query=mq.queryAgentNodeMachineAgentAvailability(tier, node, start, end, rollup);
                 break;
             case 2:
-                query=mq.queryHDNodeCPUBusy(tier, node, start, end);
+                query=mq.queryHDNodeCPUBusy(tier, node, start, end, rollup);
                 break;
             case 3:
-                query=mq.queryHDNodeCPUIdle(tier, node, start, end);
+                query=mq.queryHDNodeCPUIdle(tier, node, start, end, rollup);
                 break;
             case 4:
-                query=mq.queryHDNodeCPUStolen(tier, node, start, end);
+                query=mq.queryHDNodeCPUStolen(tier, node, start, end, rollup);
                 break;
             case 5:    
-                query=mq.queryHDNodeDisksKBReadPerSec(tier, node, start, end);
+                query=mq.queryHDNodeDisksKBReadPerSec(tier, node, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryHDNodeDisksKBWrittenPerSec(tier, node, start, end);
+                query=mq.queryHDNodeDisksKBWrittenPerSec(tier, node, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryHDNodeDisksReadPerSec(tier, node, start, end);
+                query=mq.queryHDNodeDisksReadPerSec(tier, node, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryHDNodeDisksWritesPerSec(tier, node, start, end);
+                query=mq.queryHDNodeDisksWritesPerSec(tier, node, start, end, rollup);
                 break;
             case 9:
-                query=mq.queryHDNodeMemoryFreePerc(tier, node, start, end);
+                query=mq.queryHDNodeMemoryFreePerc(tier, node, start, end, rollup);
                 break;
             case 10:
-                query=mq.queryHDNodeMemoryFreeMB(tier, node, start, end);
+                query=mq.queryHDNodeMemoryFreeMB(tier, node, start, end, rollup);
                 break;
             case 11:
-                query=mq.queryHDNodeMemoryTotalMB(tier, node, start, end);
+                query=mq.queryHDNodeMemoryTotalMB(tier, node, start, end, rollup);
                 break;
             case 12:
-                query=mq.queryHDNodeMemoryUsedPerc(tier, node, start, end);
+                query=mq.queryHDNodeMemoryUsedPerc(tier, node, start, end, rollup);
                 break;
             case 13:
-                query=mq.queryHDNodeMemoryUsedMB(tier, node, start, end);
+                query=mq.queryHDNodeMemoryUsedMB(tier, node, start, end, rollup);
                 break;
             case 14:
-                query=mq.queryHDNodeNetworkIncomingKB(tier, node, start, end);
+                query=mq.queryHDNodeNetworkIncomingKB(tier, node, start, end, rollup);
                 break;
             case 15:
-                query=mq.queryHDNodeNetworkIncomingKBPerSec(tier, node, start, end);
+                query=mq.queryHDNodeNetworkIncomingKBPerSec(tier, node, start, end, rollup);
                 break;
             case 16:
-                query=mq.queryHDNodeNetworkIncomingPackets(tier, node, start, end);
+                query=mq.queryHDNodeNetworkIncomingPackets(tier, node, start, end, rollup);
                 break;
             case 17:
-                query=mq.queryHDNodeNetworkIncomingPacketsPerSec(tier, node, start, end);
+                query=mq.queryHDNodeNetworkIncomingPacketsPerSec(tier, node, start, end, rollup);
                 break;
             case 18:
-                query=mq.queryHDNodeNetworkOutgoingKB(tier, node, start, end);
+                query=mq.queryHDNodeNetworkOutgoingKB(tier, node, start, end, rollup);
                 break;
             case 19:
-                query=mq.queryHDNodeNetworkOutgoingKBPerSec(tier, node, start, end);
+                query=mq.queryHDNodeNetworkOutgoingKBPerSec(tier, node, start, end, rollup);
                 break;
             case 20:
-                query=mq.queryHDNodeNetworkOutgoingPackets(tier, node, start, end);
+                query=mq.queryHDNodeNetworkOutgoingPackets(tier, node, start, end, rollup);
                 break;
             case 21:
-                query=mq.queryHDNodeNetworkOutgoingPacketsPerSec(tier, node, start, end);
+                query=mq.queryHDNodeNetworkOutgoingPacketsPerSec(tier, node, start, end, rollup);
                 break;
             case 22:
-                query=mq.queryJVMNodeProcessCPUBurntMSPerMin(tier, node, start, end);
+                query=mq.queryJVMNodeProcessCPUBurntMSPerMin(tier, node, start, end, rollup);
                 break;
             case 23:
-                query=mq.queryJVMNodeProcessCPUUsagePerc(tier, node, start, end);
+                query=mq.queryJVMNodeProcessCPUUsagePerc(tier, node, start, end, rollup);
                 break;
             case 24:
-                query=mq.queryJVMNodeGarbageCollectionGCTimeSpentPerMin(tier, node, start, end);
+                query=mq.queryJVMNodeGarbageCollectionGCTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 25:
-                query=mq.queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(tier, node, start, end);
+                query=mq.queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 26:
-                query=mq.queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(tier, node, start, end);
+                query=mq.queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 27:
-                query=mq.queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, node, start, end);
+                query=mq.queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 28:
-                query=mq.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, node, start, end);
+                query=mq.queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(tier, node, start, end, rollup);
                 break;
             case 29:
-                query=mq.queryJVMNodeMemoryHeapCommittedMB(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryHeapCommittedMB(tier, node, start, end, rollup);
                 break;
             case 30:
-                query=mq.queryJVMNodeMemoryHeapCurrentUsageMB(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryHeapCurrentUsageMB(tier, node, start, end, rollup);
                 break;
             case 31:
-                query=mq.queryJVMNodeMemoryHeapMaxAvailableMB(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryHeapMaxAvailableMB(tier, node, start, end, rollup);
                 break;
             case 32:
-                query=mq.queryJVMNodeMemoryHeapUsedPerc(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryHeapUsedPerc(tier, node, start, end, rollup);
                 break;
             case 33:
-                query=mq.queryJVMNodeMemoryNonHeapCommittedMB(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryNonHeapCommittedMB(tier, node, start, end, rollup);
                 break;
             case 34:
-                query=mq.queryJVMNodeMemoryNonHeapCurrentUsageMB(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryNonHeapCurrentUsageMB(tier, node, start, end, rollup);
                 break;
             case 35:
-                query=mq.queryJVMNodeMemoryNonHeapMaxAvailableMB(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryNonHeapMaxAvailableMB(tier, node, start, end, rollup);
                 break;
             case 36:
-                query=mq.queryJVMNodeMemoryNonHeapUsedPerc(tier, node, start, end);
+                query=mq.queryJVMNodeMemoryNonHeapUsedPerc(tier, node, start, end, rollup);
                 break;
             case 37:
-                query=mq.queryJVMNodeThreadsCurrentNoOfThreads(tier, node, start, end);
+                query=mq.queryJVMNodeThreadsCurrentNoOfThreads(tier, node, start, end, rollup);
                 break;
             case 38 :
-		query=mq.queryOAPNodeStallCount(tier,node, start, end);
+		query=mq.queryOAPNodeStallCount(tier,node, start, end, rollup);
 		break;
 	    case 39 :
-		query=mq.queryOAPNodeNumberOfVerySlowCalls(tier,node, start, end);
+		query=mq.queryOAPNodeNumberOfVerySlowCalls(tier,node, start, end, rollup);
 		break;
 	    case 40 :
-		query=mq.queryOAPNodeNumberOfSlowCalls(tier,node, start, end);
+		query=mq.queryOAPNodeNumberOfSlowCalls(tier,node, start, end, rollup);
 		break;
 	    case 41 :
-		query=mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node, start, end);
+		query=mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node, start, end, rollup);
 		break;
 	    case 42 :
-		query=mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node, start, end);
+		query=mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node, start, end, rollup);
 		break;
 	    case 43 :
-		query=mq.queryOAPNodeExceptionsPerMinute(tier,node, start, end);
+		query=mq.queryOAPNodeExceptionsPerMinute(tier,node, start, end, rollup);
 		break;
 	    case 44 :
-		query=mq.queryOAPNodeErrorsPerMinute(tier,node, start, end);
+		query=mq.queryOAPNodeErrorsPerMinute(tier,node, start, end, rollup);
 		break;
 	    case 45 :
-		query=mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node, start, end);
+		query=mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node, start, end, rollup);
 		break;
 	    case 46 :
-		query=mq.queryOAPNodeCallsPerMinute(tier,node, start, end);
+		query=mq.queryOAPNodeCallsPerMinute(tier,node, start, end, rollup);
 		break;
 	    case 47 :
-		query=mq.queryOAPNodeAvgResponseTimeMS(tier,node, start, end);
+		query=mq.queryOAPNodeAvgResponseTimeMS(tier,node, start, end, rollup);
 		break;
             default:
                 
@@ -1027,6 +1161,41 @@ public class RESTAccess {
      * </p>
      */
     public MetricDatas getRESTEUMMetricQuery(int queryIndex, String application, String urlPath, long start, long end){
+        return getRESTEUMMetricQuery(queryIndex, application, urlPath, start, end, false);
+    }
+    
+    /**
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param urlPath URL path that was captured
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup 
+     * @return {@link MetricDatas}
+     * 
+     * <p>
+     * <br/>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
+     * <br/>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
+     * <br/>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
+     * <br/>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
+     * <br/>Index  4 : queryEUM_AJAX_END_USER_RESPONSE_TIME
+     * <br/>Index  5 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
+     * <br/>Index  6 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
+     * <br/>Index  7 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
+     * <br/>Index  8 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
+     * <br/>Index  9 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
+     * <br/>Index 10 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
+     * <br/>Index 11 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
+     * <br/>Index 12 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
+     * <br/>Index 13 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
+     * <br/>Index 14 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+     * <br/>Index 15 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
+     * <br/>Index 16 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
+     * <br/>Index 17 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(urlPath, start, end);
+     * </p>
+     */
+    public MetricDatas getRESTEUMMetricQuery(int queryIndex, String application, String urlPath, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex ")
                     .append(queryIndex).append(" application ").append(application).append(" url ").append(urlPath).toString());}
@@ -1034,75 +1203,75 @@ public class RESTAccess {
         switch(queryIndex){
             case 0:
                 // Agent query
-                query=mq.queryEUM_AJAX_REQUESTS_PER_MIN(urlPath, start, end);
+                query=mq.queryEUM_AJAX_REQUESTS_PER_MIN(urlPath, start, end, rollup);
                 break;
             case 1: 
                 // Agent query
-                query=mq.queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN(urlPath, start, end);
+                query=mq.queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN(urlPath, start, end, rollup);
                 break;
             case 2: 
                 // Agent query
-                query=mq.queryEUM_AJAX_DOC_DOWNLOAD_TIME(urlPath, start, end);
+                query=mq.queryEUM_AJAX_DOC_DOWNLOAD_TIME(urlPath, start, end, rollup);
                 break;
             case 3: 
                 // Agent query
-                query=mq.queryEUM_AJAX_DOC_PROCESSING_TIME(urlPath, start, end);
+                query=mq.queryEUM_AJAX_DOC_PROCESSING_TIME(urlPath, start, end, rollup);
                 break;
             case 4: 
                 // Agent query
-                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME(urlPath, start, end);
+                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME(urlPath, start, end, rollup);
                 break;
             case 5: 
                 // Agent query
-                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 6: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_REQUESTS_PER_MIN(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_REQUESTS_PER_MIN(urlPath, start, end, rollup);
                 break;
             case 7: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_DOC_READY_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_DOC_READY_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 8: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(urlPath, start, end, rollup);
                 break;    
             case 9: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(urlPath, start, end, rollup);
                 break;
             case 10: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(urlPath, start, end, rollup);
                 break;
             case 11: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 12: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_FRONT_END_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_FRONT_END_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 13: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 14: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(urlPath, start, end, rollup);
                 break;
             case 15: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 16: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 17: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(urlPath, start, end);
+                query=mq.queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(urlPath, start, end, rollup);
                 break;
             default:
                 
@@ -1150,43 +1319,72 @@ public class RESTAccess {
      * </p>
      */
     public MetricDatas getRESTBTMetricQuery(int queryIndex, String application, String tier, String site, long start, long end){
+        return getRESTBTMetricQuery(queryIndex, application, tier, site, start, end,false);
+    }
+    
+    /**
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param site Business transaction name
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Boolean whether to rollup the metrics
+     * @return {@link MetricDatas}
+     * 
+     * <p>
+     * <br/>Index  0 : queryBTAVERAGE_BLOCK_TIME_MS
+     * <br/>Index  1 : queryBTAVERAGE_CPU_USED_MS
+     * <br/>Index  2 : queryBTAVERAGE_REQUEST_SIZE
+     * <br/>Index  3 : queryBTAVERAGE_RESPONSE_TIME
+     * <br/>Index  4 : queryBTAVERAGE_WAIT_TIME_MS
+     * <br/>Index  5 : queryBTCALL_PER_MINUTE
+     * <br/>Index  6 : queryBTERRORS_PER_MINUTE
+     * <br/>Index  7 : queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS
+     * <br/>Index  8 : queryBTNUMBER_OF_SLOW_CALLS
+     * <br/>Index  9 : queryBTNUMBER_OF_VERY_SLOW_CALLS
+     * <br/>Index 10 : queryBTSTALL_COUNT
+     * </p>
+     */
+    public MetricDatas getRESTBTMetricQuery(int queryIndex, String application, String tier, String site, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex ")
                     .append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).append(" site ").append(site).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                query=mq.queryBTAVERAGE_BLOCK_TIME_MS(application, tier, site, start, end);
+                query=mq.queryBTAVERAGE_BLOCK_TIME_MS(application, tier, site, start, end, rollup);
                 break;
             case 1:
-                query=mq.queryBTAVERAGE_CPU_USED_MS(application, tier, site, start, end);
+                query=mq.queryBTAVERAGE_CPU_USED_MS(application, tier, site, start, end, rollup);
                 break;
             case 2:
-                query=mq.queryBTAVERAGE_REQUEST_SIZE(application, tier, site, start, end);
+                query=mq.queryBTAVERAGE_REQUEST_SIZE(application, tier, site, start, end, rollup);
                 break;
             case 3:
-                query=mq.queryBTAVERAGE_RESPONSE_TIME(application, tier, site, start, end);
+                query=mq.queryBTAVERAGE_RESPONSE_TIME(application, tier, site, start, end, rollup);
                 break;
             case 4:
-                query=mq.queryBTAVERAGE_WAIT_TIME_MS(application, tier, site, start, end);
+                query=mq.queryBTAVERAGE_WAIT_TIME_MS(application, tier, site, start, end, rollup);
                 break;
             case 5:
-                query=mq.queryBTCALL_PER_MINUTE(application, tier, site, start, end);
+                query=mq.queryBTCALL_PER_MINUTE(application, tier, site, start, end, rollup);
                 break;
             case 6:
-                query=mq.queryBTERRORS_PER_MINUTE(application, tier, site, start, end);
+                query=mq.queryBTERRORS_PER_MINUTE(application, tier, site, start, end, rollup);
                 break;
             case 7:
-                query=mq.queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS(application, tier, site, start, end);
+                query=mq.queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS(application, tier, site, start, end, rollup);
                 break;
             case 8:
-                query=mq.queryBTNUMBER_OF_SLOW_CALLS(application, tier, site, start, end);
+                query=mq.queryBTNUMBER_OF_SLOW_CALLS(application, tier, site, start, end, rollup);
                 break;
             case 9:
-                query=mq.queryBTNUMBER_OF_VERY_SLOW_CALLS(application, tier, site, start, end);
+                query=mq.queryBTNUMBER_OF_VERY_SLOW_CALLS(application, tier, site, start, end, rollup);
                 break;
             case 10:
-                query=mq.queryBTSTALL_COUNT(application, tier, site, start, end);
+                query=mq.queryBTSTALL_COUNT(application, tier, site, start, end, rollup);
                 break;
             default:
                 break;

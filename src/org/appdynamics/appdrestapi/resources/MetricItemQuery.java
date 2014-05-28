@@ -30,7 +30,7 @@ public class MetricItemQuery {
         return bud.toString();
     }
     
-    public static String queryGeneralMetricQuery(String baseURL, String application, String path, long start, long end){
+    public static String queryGeneralMetricQuery(String baseURL, String application, String path, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -41,7 +41,7 @@ public class MetricItemQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();

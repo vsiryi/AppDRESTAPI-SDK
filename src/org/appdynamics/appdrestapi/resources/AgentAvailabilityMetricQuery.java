@@ -11,7 +11,7 @@ package org.appdynamics.appdrestapi.resources;
 public class AgentAvailabilityMetricQuery{
     
     
-    public static String queryAgentNodeAppAgentAvailability(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryAgentNodeAppAgentAvailability(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -27,11 +27,11 @@ public class AgentAvailabilityMetricQuery{
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);
         return val.toString();
     }
     
-    public static String queryAgentTierAppAgentAvailability(String baseURL, String application,String tier, long start, long end){
+    public static String queryAgentTierAppAgentAvailability(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -46,7 +46,7 @@ public class AgentAvailabilityMetricQuery{
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         return val.toString();
     }
     
@@ -54,7 +54,7 @@ public class AgentAvailabilityMetricQuery{
      * 
      *  This is going to grab the node availability
      */
-    public static String queryAgentNodeMachineAgentAvailability(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryAgentNodeMachineAgentAvailability(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -70,7 +70,7 @@ public class AgentAvailabilityMetricQuery{
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         return val.toString();
     }
     
@@ -78,7 +78,7 @@ public class AgentAvailabilityMetricQuery{
      *  This will grab the Tier availability, for the time period provided.
      *  
      */
-    public static String queryAgentTierMachineAgentAvailability(String baseURL, String application,String tier, long start, long end){
+    public static String queryAgentTierMachineAgentAvailability(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -93,7 +93,7 @@ public class AgentAvailabilityMetricQuery{
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         return val.toString();
     }
     

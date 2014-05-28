@@ -42,7 +42,7 @@ public class BusinessTransactionQuery {
         return bud.toString();
     }
 
-    public static String queryBTAVERAGE_BLOCK_TIME_MS(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTAVERAGE_BLOCK_TIME_MS(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -61,13 +61,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTAVERAGE_CPU_USED_MS(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTAVERAGE_CPU_USED_MS(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -86,13 +86,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTAVERAGE_REQUEST_SIZE(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTAVERAGE_REQUEST_SIZE(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -111,13 +111,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTAVERAGE_RESPONSE_TIME(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTAVERAGE_RESPONSE_TIME(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -136,13 +136,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTAVERAGE_WAIT_TIME_MS(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTAVERAGE_WAIT_TIME_MS(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -161,13 +161,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTCALL_PER_MINUTE(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTCALL_PER_MINUTE(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -186,13 +186,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTERRORS_PER_MINUTE(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTERRORS_PER_MINUTE(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -211,13 +211,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTNORMAL_AVERAGE_RESPONSE_TIME_MS(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -236,13 +236,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTNUMBER_OF_SLOW_CALLS(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTNUMBER_OF_SLOW_CALLS(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -261,13 +261,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTNUMBER_OF_VERY_SLOW_CALLS(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTNUMBER_OF_VERY_SLOW_CALLS(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -286,13 +286,13 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryBTSTALL_COUNT(String baseURL, String application, String tier, String site, long start, long end){
+    public static String queryBTSTALL_COUNT(String baseURL, String application, String tier, String site, long start, long end, boolean rollup){
         //Business Transaction Performance|Business Transactions|tomcat-links|/links - Catchall|Average Block Time (ms)
         //https://familysearch.saas.appdynamics.com/controller/rest/applications/FamilySearch-production/metric-data?
         //metric-path=Business%20Transaction%20Performance%7CBusiness%20Transactions%7Ctomcat-links%7C/links%20-%20Catchall%7CAverage%20Block%20Time%20(ms)
@@ -311,7 +311,7 @@ public class BusinessTransactionQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();

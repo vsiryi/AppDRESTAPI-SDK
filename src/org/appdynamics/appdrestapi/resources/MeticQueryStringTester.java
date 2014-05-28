@@ -108,26 +108,26 @@ public class MeticQueryStringTester {
         System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryJVMTierThreadsCurrentNoOfThreads(tier, start, end) + "'\n");
         System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryJVMNodeThreadsCurrentNoOfThreads(tier, node, start, end) + "'\n");
         */
-        System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierStallCount(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierNumberOfVerySlowCalls(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierNumberOfSlowCalls(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierInfrastructureErrorsPerMinute(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierHttpErrorCodesPerMinute(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierExceptionsPerMinute(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierErrorsPerMinute(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierErrorPageRedirectsPerMinute(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierCallsPerMinute(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierAvgResponseTimeMS(tier, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeStallCount(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeNumberOfVerySlowCalls(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeNumberOfSlowCalls(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeExceptionsPerMinute(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeErrorsPerMinute(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeCallsPerMinute(tier,node, start, end) + "'\n");
-	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeAvgResponseTimeMS(tier,node, start, end) + "'\n");
+        System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierStallCount(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierNumberOfVerySlowCalls(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierNumberOfSlowCalls(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierInfrastructureErrorsPerMinute(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierHttpErrorCodesPerMinute(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierExceptionsPerMinute(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierErrorsPerMinute(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierErrorPageRedirectsPerMinute(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierCallsPerMinute(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPTierAvgResponseTimeMS(tier, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeStallCount(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeNumberOfVerySlowCalls(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeNumberOfSlowCalls(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeInfrastructureErrorsPerMinute(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeHttpErrorCodesPerMinute(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeExceptionsPerMinute(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeErrorsPerMinute(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeErrorPageRedirectsPerMinute(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeCallsPerMinute(tier,node, start, end, false) + "'\n");
+	System.out.println("curl -k -u tam@familysearch:FFival1to2 '" + mq.queryOAPNodeAvgResponseTimeMS(tier,node, start, end, false) + "'\n");
     }
     
 }

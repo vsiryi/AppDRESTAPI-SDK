@@ -9,7 +9,7 @@ package org.appdynamics.appdrestapi.resources;
  * @author soloink
  */
 public class JVMMetricQuery {
-    public static String queryJVMTierProcessCPUBurntMSPerMin(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierProcessCPUBurntMSPerMin(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -25,13 +25,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeProcessCPUBurntMSPerMin(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeProcessCPUBurntMSPerMin(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -48,13 +48,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierProcessCPUUsagePerc(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierProcessCPUUsagePerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -70,13 +70,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeProcessCPUUsagePerc(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeProcessCPUUsagePerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -93,14 +93,14 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
     /***/
-    public static String queryJVMTierGarbageCollectionGCTimeSpentPerMin(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierGarbageCollectionGCTimeSpentPerMin(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -116,13 +116,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeGarbageCollectionGCTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeGarbageCollectionGCTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -139,13 +139,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierGarbageCollectionMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -161,13 +161,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeGarbageCollectionMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -184,13 +184,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
       
-    public static String queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierGarbageCollectionMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -206,13 +206,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeGarbageCollectionMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -229,13 +229,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -251,13 +251,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeGarbageCollectionNumberOfMajorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -274,13 +274,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -296,13 +296,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeGarbageCollectionNumberOfMinorCollectionTimeSpentPerMin(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -319,14 +319,14 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
     /* *************************** Memory ****************************** */
-    public static String queryJVMTierMemoryHeapCommittedMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryHeapCommittedMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -342,13 +342,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryHeapCommittedMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryHeapCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -365,13 +365,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierMemoryHeapCurrentUsageMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryHeapCurrentUsageMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -387,13 +387,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryHeapCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryHeapCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -410,13 +410,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierMemoryHeapMaxAvailableMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryHeapMaxAvailableMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -432,13 +432,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryHeapMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryHeapMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -455,13 +455,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierMemoryHeapUsedPerc(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryHeapUsedPerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -477,13 +477,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryHeapUsedPerc(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryHeapUsedPerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -500,14 +500,14 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
     /* **** Non-Heap ***** */
-    public static String queryJVMTierMemoryNonHeapCommittedMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryNonHeapCommittedMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -523,13 +523,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryNonHeapCommittedMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryNonHeapCommittedMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -546,13 +546,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierMemoryNonHeapCurrentUsageMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryNonHeapCurrentUsageMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -568,13 +568,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryNonHeapCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryNonHeapCurrentUsageMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -591,13 +591,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierMemoryNonHeapMaxAvailableMB(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryNonHeapMaxAvailableMB(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -613,13 +613,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryNonHeapMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryNonHeapMaxAvailableMB(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -636,13 +636,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierMemoryNonHeapUsedPerc(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierMemoryNonHeapUsedPerc(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -658,13 +658,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeMemoryNonHeapUsedPerc(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeMemoryNonHeapUsedPerc(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -681,13 +681,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMTierThreadsCurrentNoOfThreads(String baseURL, String application,String tier, long start, long end){
+    public static String queryJVMTierThreadsCurrentNoOfThreads(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -703,13 +703,13 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryJVMNodeCurrentNoOfThreads(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryJVMNodeCurrentNoOfThreads(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -726,7 +726,7 @@ public class JVMMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();

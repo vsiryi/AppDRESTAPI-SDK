@@ -22,7 +22,7 @@ package org.appdynamics.appdrestapi.resources;
 public class OverAllPerformanceMetricQuery {
     
     //Stall Count
-    public static String queryOAPAppStallCount(String baseURL, String application, long start, long end){
+    public static String queryOAPAppStallCount(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -37,13 +37,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierStallCount(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierStallCount(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -58,13 +58,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeStallCount(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeStallCount(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -80,12 +80,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     //Number of Very Slow Call
-    public static String queryOAPAppNumberOfVerySlowCalls(String baseURL, String application, long start, long end){
+    public static String queryOAPAppNumberOfVerySlowCalls(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -100,13 +100,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierNumberOfVerySlowCalls(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierNumberOfVerySlowCalls(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -121,13 +121,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeNumberOfVerySlowCalls(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeNumberOfVerySlowCalls(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -143,12 +143,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     //Number of Slow Calls
-    public static String queryOAPAppNumberOfSlowCalls(String baseURL, String application, long start, long end){
+    public static String queryOAPAppNumberOfSlowCalls(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -163,13 +163,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierNumberOfSlowCalls(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierNumberOfSlowCalls(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -184,13 +184,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeNumberOfSlowCalls(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeNumberOfSlowCalls(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -206,12 +206,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     //Infrastructure Errors per Minute
-    public static String queryOAPAppInfrastructureErrorsPerMinute(String baseURL, String application, long start, long end){
+    public static String queryOAPAppInfrastructureErrorsPerMinute(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -226,13 +226,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierInfrastructureErrorsPerMinute(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierInfrastructureErrorsPerMinute(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -247,13 +247,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeInfrastructureErrorsPerMinute(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeInfrastructureErrorsPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -269,12 +269,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     //HTTP Error Codes per Minute
-    public static String queryOAPAppHttpErrorCodesPerMinute(String baseURL, String application, long start, long end){
+    public static String queryOAPAppHttpErrorCodesPerMinute(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -289,13 +289,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierHttpErrorCodesPerMinute(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierHttpErrorCodesPerMinute(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -310,13 +310,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeHttpErrorCodesPerMinute(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeHttpErrorCodesPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -332,12 +332,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     //Exceptions per Minute
-    public static String queryOAPAppExceptionsPerMinute(String baseURL, String application, long start, long end){
+    public static String queryOAPAppExceptionsPerMinute(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -352,13 +352,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierExceptionsPerMinute(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierExceptionsPerMinute(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -373,13 +373,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeExceptionsPerMinute(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeExceptionsPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -395,13 +395,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     
     //Errors per Minute
-    public static String queryOAPAppErrorsPerMinute(String baseURL, String application, long start, long end){
+    public static String queryOAPAppErrorsPerMinute(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -416,13 +416,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierErrorsPerMinute(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierErrorsPerMinute(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -437,13 +437,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeErrorsPerMinute(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeErrorsPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -459,13 +459,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     
     //Error Page Redirects per Minute
-    public static String queryOAPAppErrorPageRedirectsPerMinute(String baseURL, String application, long start, long end){
+    public static String queryOAPAppErrorPageRedirectsPerMinute(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -480,13 +480,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierErrorPageRedirectsPerMinute(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierErrorPageRedirectsPerMinute(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -501,13 +501,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeErrorPageRedirectsPerMinute(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeErrorPageRedirectsPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -523,12 +523,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
     //CallsPerMinute
-    public static String queryOAPAppCallsPerMinute(String baseURL, String application, long start, long end){
+    public static String queryOAPAppCallsPerMinute(String baseURL, String application, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -543,13 +543,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierCallsPerMinute(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierCallsPerMinute(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -564,13 +564,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeCallsPerMinute(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeCallsPerMinute(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -586,12 +586,12 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
      // Avg Response Time
-    public static String queryOAPAppAvgResponseTimeMS(String baseURL, String application,long start, long end){
+    public static String queryOAPAppAvgResponseTimeMS(String baseURL, String application,long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -606,13 +606,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPTierAvgResponseTimeMS(String baseURL, String application,String tier, long start, long end){
+    public static String queryOAPTierAvgResponseTimeMS(String baseURL, String application,String tier, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -627,13 +627,13 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;
+        if(!rollup) val.append(s.NO_ROLL_UP);;
         
         
         return val.toString();
     }
     
-    public static String queryOAPNodeAvgResponseTimeMS(String baseURL, String application,String tier, String node, long start, long end){
+    public static String queryOAPNodeAvgResponseTimeMS(String baseURL, String application,String tier, String node, long start, long end, boolean rollup){
         StringBuilder val=new StringBuilder();
         val.append(baseURL).append(s.CONTROLLER_APPS);
         val.append(QueryEncoder.encode(application));
@@ -649,7 +649,7 @@ public class OverAllPerformanceMetricQuery {
         //val.append(s.LAST_15_MINUTES);
         val.append(s.TIME_BETWEEN).append(s.TIME_START_TIME).append(start);
         val.append(s.TIME_END_TIME).append(end);
-        val.append(s.NO_ROLL_UP);;        
+        if(!rollup) val.append(s.NO_ROLL_UP);;        
         
         return val.toString();
     }
