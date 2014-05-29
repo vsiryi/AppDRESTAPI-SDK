@@ -139,8 +139,8 @@ public class RESTAccess {
      * <p>
      * This will return the list of the metric path bases, for example 'Business Transaction Performance" 
      * </p>
-     * @param application
-     * @return 
+     * @param application Name of the application
+     * @return {@link MetricItems}
      */
     public MetricItems getBaseMetricList(String application){
         try{
@@ -155,9 +155,9 @@ public class RESTAccess {
      * <p>
      * This will allow the user to provide the metric path they wish to walk. The paths need to be separated by the character '|'
      * </p>
-     * @param application
-     * @param metricPath
-     * @return 
+     * @param application Name of the application
+     * @param metricPath Metric path to the metric list requested
+     * @return {@link MetricItems}
      */
     public MetricItems getBaseMetricListPath(String application, String metricPath){
         try{
@@ -168,6 +168,17 @@ public class RESTAccess {
         return null;
     }
     
+    /**
+     * <p>
+     * This is going to execute a generic query based on the application and full metric path provided.
+     * </p>
+     * @param application Name of the application
+     * @param metricPath String that determine which metric to request
+     * @param start Timestamp of the start time
+     * @param end Timestamp of the end time
+     * @param rollup Boolean determines whether to roll up the metrics
+     * @return {@link MetricDatas}
+     */
     public MetricDatas getRESTGenericMetricQuery(String application, String metricPath, long start, long end, boolean rollup){
         try{
             return RESTExecuter.executeMetricQuery(auth, MetricItemQuery.queryGeneralMetricQuery(baseURL.getControllerURL(), application, metricPath, start, end,rollup));
@@ -244,10 +255,10 @@ public class RESTAccess {
     
     /**
      * 
-     * @param application
-     * @param start
-     * @param end
-     * @return 
+     * @param application Name of the application
+     * @param start Timestamp of the start time
+     * @param end Timestamp of the end time
+     * @return {@link Snapshots}
      */
     public Snapshots getSnapshots(String application, long start, long end){
         try{
@@ -260,10 +271,10 @@ public class RESTAccess {
     
     /**
      * 
-     * @param application
-     * @param start
-     * @param end
-     * @return 
+     * @param application Id of the application
+     * @param start Timestamp of the start time
+     * @param end Timestamp of the end time
+     * @return {@link Snapshots}
      */
     public Snapshots getSnapshots(int application, long start, long end){
         try{
@@ -339,9 +350,9 @@ public class RESTAccess {
 
     /**
      * 
-     * @param application
-     * @param tier
-     * @return 
+     * @param application Name of the application
+     * @param tier Name of the tier
+     * @return {@link Nodes}
      */
     public Nodes getNodesFromTier(String application, String tier){
         try{
@@ -354,9 +365,9 @@ public class RESTAccess {
     
     /**
      * 
-     * @param application
-     * @param tier
-     * @return 
+     * @param application Id of the application
+     * @param tier Name of the tier
+     * @return {@link Nodes}
      */
     public Nodes getNodesFromTier(int application, String tier){
         try{
@@ -369,9 +380,9 @@ public class RESTAccess {
     
     /**
      * 
-     * @param application
-     * @param tier
-     * @return 
+     * @param application Name of the application
+     * @param tier Id of the tier
+     * @return {@link Nodes}
      */
     public Nodes getNodesFromTier(String application, int tier){
         try{
@@ -384,8 +395,8 @@ public class RESTAccess {
     
     /**
      * 
-     * @param application
-     * @param tier
+     * @param application Id of the application
+     * @param tier Id of the tier
      * @return 
      */
     public Nodes getNodesFromTier(int application, int tier){
@@ -464,7 +475,7 @@ public class RESTAccess {
      * <p>
      * Returns the backends for an application name.
      * </p>
-     * @param application
+     * @param application Name of the application
      * @return 
      */
     public Backends getBackendsForApplication(String application){
@@ -480,9 +491,9 @@ public class RESTAccess {
      * <p>
      * Returns the health rule violations for an application.
      * </p>
-     * @param application
-     * @param start
-     * @param end
+     * @param application Name of the application
+     * @param start Timestamp of the start time
+     * @param end Timestamp of the end time
      * @return {@link PolicyViolations}
      */
     public PolicyViolations getHealthRuleViolations(String application, long start, long end){
@@ -499,9 +510,9 @@ public class RESTAccess {
      * <p>
      * Returns the policy violations for an application.
      * </p>
-     * @param application
-     * @param start
-     * @param end
+     * @param application Name of the application
+     * @param start Timestamp for the start time
+     * @param end Timestamp for the end time
      * @return {@link PolicyViolations}
      */
     public PolicyViolations getPolicyViolations(String application, long start, long end){
@@ -517,12 +528,12 @@ public class RESTAccess {
      * <p>
      * Returns the events for an application.
      * </p>
-     * @param application
-     * @param eventTypes
-     * @param severities
-     * @param start
-     * @param end
-     * @return 
+     * @param application Name of the application
+     * @param eventTypes Event types to request, comma delimited list
+     * @param severities Severities to request, comma delimited list
+     * @param start Timestamp of the start time
+     * @param end Timestamp of the end time
+     * @return {@link Events}
      */
     public Events getEvents(String application, String eventTypes, String severities, long start, long end){
         try{
@@ -606,7 +617,7 @@ public class RESTAccess {
      * @param tier Name of the tier which holds the metric
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
-     * @param rollup
+     * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * 
      * <p>
@@ -906,7 +917,7 @@ public class RESTAccess {
      * @param node Name of the node which holds the metric
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
-     * @param rollup Boolean
+     * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * <p>
      * <br/>Index 0  : queyrAgentTierAppAgentAvailability
@@ -1171,7 +1182,7 @@ public class RESTAccess {
      * @param urlPath URL path that was captured
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
-     * @param rollup 
+     * @param rollup Boolean determines whether to roll up the metrics 
      * @return {@link MetricDatas}
      * 
      * <p>
@@ -1330,7 +1341,7 @@ public class RESTAccess {
      * @param site Business transaction name
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
-     * @param rollup Boolean whether to rollup the metrics
+     * @param rollup Boolean determines whether to roll up the metrics
      * @return {@link MetricDatas}
      * 
      * <p>
