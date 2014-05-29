@@ -1417,4 +1417,108 @@ public class RESTAccess {
         return null;
         
     }
+    
+    /**
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @return {@link MetricDatas}
+     * 
+     * <p>
+     * <br/>Index  0 : queryBackendAverageResponseTimeMS
+     * <br/>Index  1 : queryBackendCallsPerMinute
+     * <br/>Index  2 : queryBackendErrorsPerMinute
+     * </p>
+     */
+    public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String tier, long start, long end){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex ")
+                    .append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            case 0:
+                query=mq.queryBackendAverageResponseTimeMS(application, tier, start, end, false);
+                break;
+            case 1:
+                query=mq.queryBackendCallsPerMinute(application, tier, start, end, false);
+                break;
+            case 2:
+                query=mq.queryBackendErrorsPerMinute(application, tier, start, end, false);
+                break;
+            default:
+                break;
+        }
+        
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder()
+                    .append("\nQueryIndex sent ").append(queryIndex).append(" application ")
+                    .append(application).append(" tier ").append(tier).toString());
+            return null;
+        }
+        
+        try{
+            return RESTExecuter.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+        
+    }
+    
+    /**
+     * 
+     * @param queryIndex Index of the type of query to run
+     * @param application Name of the application which holds the metric
+     * @param tier Name of the tier which holds the metric
+     * @param start Timestamp in milliseconds for the start time for the query
+     * @param end Timestamp in milliseconds for the end time for the query
+     * @param rollup Boolean determines whether to roll up the metrics
+     * @return {@link MetricDatas}
+     * 
+     * <p>
+     * <br/>Index  0 : queryBackendAverageResponseTimeMS
+     * <br/>Index  1 : queryBackendCallsPerMinute
+     * <br/>Index  2 : queryBackendErrorsPerMinute
+     * </p>
+     * 
+     */
+    public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
+        String query=null;
+        if(s.debugLevel >= 2){logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex ")
+                    .append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+        MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
+        switch(queryIndex){
+            case 0:
+                query=mq.queryBackendAverageResponseTimeMS(application, tier, start, end, rollup);
+                break;
+            case 1:
+                query=mq.queryBackendCallsPerMinute(application, tier, start, end, rollup);
+                break;
+            case 2:
+                query=mq.queryBackendErrorsPerMinute(application, tier, start, end, rollup);
+                break;
+            default:
+                break;
+        }
+        
+        //This will be the final check, to insure that we don't send a bad query.
+        if(query==null){ 
+            logger.log(Level.WARNING,new StringBuilder()
+                    .append("\nQueryIndex sent ").append(queryIndex).append(" application ")
+                    .append(application).append(" tier ").append(tier).toString());
+            return null;
+        }
+        
+        try{
+            return RESTExecuter.executeMetricQuery(auth, query);
+        }catch(Exception e){
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+        }
+        return null;
+        
+    }
 }

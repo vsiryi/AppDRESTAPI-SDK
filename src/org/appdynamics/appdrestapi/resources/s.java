@@ -34,6 +34,7 @@ public class s {
     public static final String URL_HEALTH_RULE_VIOLATIONS="/healthrule-violations?";
     public static final String URL_REQUEST_SNAPSHOTS="/request-snapshots?";
     public static final String URL_BACKENDS="/backends";
+    public static final String URL_BACKENDS1="Backends|";
     public static final String URL_METRIC_LIST="/metrics";
     // App Agent Path
     // BDR Big Deal Retail/metric-data?metric-path=Application Infrastructure Performance|1stTier|Agent|App|Availability&time-range-type=BEFORE_NOW&duration-in-mins=15

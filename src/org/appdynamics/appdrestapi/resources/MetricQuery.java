@@ -574,5 +574,21 @@ public class MetricQuery {
         return BusinessTransactionQuery.queryBTSTALL_COUNT(baseURL, application, tier, site, start, end, rollup);
     }
     
+    /*
+     * *************************************************************************
+     *              Backends 
+     */
+    
+    public String queryBackendAverageResponseTimeMS(String application, String tier, long start, long end, boolean rollup){
+        return BackendsQuery.queryBackendAverageResponseTimeMS(baseURL, application, tier, start, end, rollup);
+    }
+    
+    public String queryBackendCallsPerMinute(String application, String tier, long start, long end, boolean rollup){
+        return BackendsQuery.queryBackendCallsPerMinute(baseURL, application, tier, start, end, rollup);
+    }
+    
+    public String queryBackendErrorsPerMinute(String application, String tier, long start, long end, boolean rollup){
+        return BackendsQuery.queryBackendErrorsPerMinute(baseURL, application, tier, start, end, rollup);
+    }
     
 }
