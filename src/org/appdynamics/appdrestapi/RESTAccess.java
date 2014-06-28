@@ -397,7 +397,7 @@ public class RESTAccess {
      * 
      * @param application Id of the application
      * @param tier Id of the tier
-     * @return 
+     * @return {@link Nodes}
      */
     public Nodes getNodesFromTier(int application, int tier){
         try{
@@ -476,7 +476,7 @@ public class RESTAccess {
      * Returns the backends for an application name.
      * </p>
      * @param application Name of the application
-     * @return 
+     * @return {@link Backends}
      */
     public Backends getBackendsForApplication(String application){
         try{
@@ -1151,24 +1151,79 @@ public class RESTAccess {
      * @return {@link MetricDatas}
      * 
      * <p>
-     * <br/>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
-     * <br/>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
-     * <br/>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
-     * <br/>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
-     * <br/>Index  4 : queryEUM_AJAX_END_USER_RESPONSE_TIME
-     * <br/>Index  5 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
-     * <br/>Index  6 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
-     * <br/>Index  7 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
-     * <br/>Index  8 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
-     * <br/>Index  9 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
-     * <br/>Index 10 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
-     * <br/>Index 11 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
-     * <br/>Index 12 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
-     * <br/>Index 13 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
-     * <br/>Index 14 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
-     * <br/>Index 15 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
-     * <br/>Index 16 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
-     * <br/>Index 17 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(urlPath, start, end);
+        <br>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
+        <br>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
+        <br>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
+        <br>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
+        <br>Index  4 : queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE
+        <br>Index  5 : queryEUM_AJAX_APPLICATION_SERVER_TIME_MS
+        <br>Index  6 : queryEUM_AJAX_END_USER_RESPONSE_TIME
+        <br>Index  7 : queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+        <br>Index  8 : queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+        <br>Index  9 : queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+        <br>Index  10 : queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+        <br>Index  11 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
+        <br>Index  12 : queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+        <br>Index  13 : queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+        <br>Index  14 : queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+        <br>Index  15 : queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        <br>Index  16 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
+        <br>Index  17 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
+        <br>Index  18 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+        <br>Index  19 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
+        <br>Index  20 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
+        <br>Index  21 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE
+        <br>Index  22 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
+        <br>Index  23 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
+        <br>Index  24 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
+        <br>Index  25 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
+        <br>Index  26 : queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS
+        <br>Index  27 : queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE
+        <br>Index  28 : queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS
+        <br>Index  29 : queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS
+        <br>Index  30 : queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS
+        <br>Index  31 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
+        <br>Index  32 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+        <br>Index  33 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+        <br>Index  34 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+        <br>Index  35 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+        <br>Index  36 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
+        <br>Index  37 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+        <br>Index  38 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+        <br>Index  39 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+        <br>Index  40 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        <br>Index  41 : queryEUM_BASE_PAGES_DOM_READY_TIME_MS
+        <br>Index  42 : queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS
+        <br>Index  43 : queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS
+        <br>Index  44 : queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS
+        <br>Index  45 : queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS
+        <br>Index  46 : queryEUM_IFRAME_FRONT_END_TIME_MS
+        <br>Index  47 : queryEUM_IFRAME_DOCUMENT_READY_TIME_MS
+        <br>Index  48 : queryEUM_IFRAME_TCP_CONNECT_TIME_MS
+        <br>Index  49 : queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS
+        <br>Index  50 : queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS
+        <br>Index  51 : queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS
+        <br>Index  52 : queryEUM_IFRAME_PAGE_RENDER_TIME_MS
+        <br>Index  53 : queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+        <br>Index  54 : queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS
+        <br>Index  55 : queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS
+        <br>Index  56 : queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS
+        <br>Index  57 : queryEUM_IFRAME_REQUESTS_PER_MINUTE
+        <br>Index  58 : queryEUM_IFRAME_FIRST_BYTE_TIME_MS
+        <br>Index  59 : queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+        <br>Index  60 : queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+        <br>Index  61 : queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+        <br>Index  62 : queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        <br>Index  63 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS
+        <br>Index  64 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+        <br>Index  65 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+        <br>Index  66 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+        <br>Index  67 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+        <br>Index  68 : queryEUM_IFRAME_DOM_READY_TIME_MS
+        <br>Index  69 : queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS
+        <br>Index  70 : queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS
+        <br>Index  71 : queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS
+        <br>Index  72 : queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS
      * </p>
      */
     public MetricDatas getRESTEUMMetricQuery(int queryIndex, String application, String urlPath, long start, long end){
@@ -1186,24 +1241,79 @@ public class RESTAccess {
      * @return {@link MetricDatas}
      * 
      * <p>
-     * <br/>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
-     * <br/>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
-     * <br/>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
-     * <br/>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
-     * <br/>Index  4 : queryEUM_AJAX_END_USER_RESPONSE_TIME
-     * <br/>Index  5 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
-     * <br/>Index  6 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
-     * <br/>Index  7 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
-     * <br/>Index  8 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
-     * <br/>Index  9 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
-     * <br/>Index 10 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
-     * <br/>Index 11 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
-     * <br/>Index 12 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
-     * <br/>Index 13 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
-     * <br/>Index 14 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
-     * <br/>Index 15 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
-     * <br/>Index 16 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
-     * <br/>Index 17 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(urlPath, start, end);
+        <br>Index  0 : queryEUM_AJAX_REQUESTS_PER_MIN
+        <br>Index  1 : queryEUM_AJAX_REQUESTS_ERRORS_PER_MIN
+        <br>Index  2 : queryEUM_AJAX_DOC_DOWNLOAD_TIME
+        <br>Index  3 : queryEUM_AJAX_DOC_PROCESSING_TIME
+        <br>Index  4 : queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE
+        <br>Index  5 : queryEUM_AJAX_APPLICATION_SERVER_TIME_MS
+        <br>Index  6 : queryEUM_AJAX_END_USER_RESPONSE_TIME
+        <br>Index  7 : queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+        <br>Index  8 : queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+        <br>Index  9 : queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+        <br>Index  10 : queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+        <br>Index  11 : queryEUM_AJAX_FIRST_BYTE_TIME_MS
+        <br>Index  12 : queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+        <br>Index  13 : queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+        <br>Index  14 : queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+        <br>Index  15 : queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        <br>Index  16 : queryEUM_BASE_PAGES_FRONT_END_TIME_MS
+        <br>Index  17 : queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS
+        <br>Index  18 : queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+        <br>Index  19 : queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS
+        <br>Index  20 : queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS
+        <br>Index  21 : queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE
+        <br>Index  22 : queryEUM_BASE_PAGES_REQUESTS_PER_MIN
+        <br>Index  23 : queryEUM_BASE_PAGES_DOC_READY_TIME_MS
+        <br>Index  24 : queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME
+        <br>Index  25 : queryEUM_BASE_PAGES_DOC_PROCESSING_TIME
+        <br>Index  26 : queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS
+        <br>Index  27 : queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE
+        <br>Index  28 : queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS
+        <br>Index  29 : queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS
+        <br>Index  30 : queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS
+        <br>Index  31 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME
+        <br>Index  32 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+        <br>Index  33 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+        <br>Index  34 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+        <br>Index  35 : queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+        <br>Index  36 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS
+        <br>Index  37 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+        <br>Index  38 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+        <br>Index  39 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+        <br>Index  40 : queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        <br>Index  41 : queryEUM_BASE_PAGES_DOM_READY_TIME_MS
+        <br>Index  42 : queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS
+        <br>Index  43 : queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS
+        <br>Index  44 : queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS
+        <br>Index  45 : queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS
+        <br>Index  46 : queryEUM_IFRAME_FRONT_END_TIME_MS
+        <br>Index  47 : queryEUM_IFRAME_DOCUMENT_READY_TIME_MS
+        <br>Index  48 : queryEUM_IFRAME_TCP_CONNECT_TIME_MS
+        <br>Index  49 : queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS
+        <br>Index  50 : queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS
+        <br>Index  51 : queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS
+        <br>Index  52 : queryEUM_IFRAME_PAGE_RENDER_TIME_MS
+        <br>Index  53 : queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE
+        <br>Index  54 : queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS
+        <br>Index  55 : queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS
+        <br>Index  56 : queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS
+        <br>Index  57 : queryEUM_IFRAME_REQUESTS_PER_MINUTE
+        <br>Index  58 : queryEUM_IFRAME_FIRST_BYTE_TIME_MS
+        <br>Index  59 : queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS
+        <br>Index  60 : queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS
+        <br>Index  61 : queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS
+        <br>Index  62 : queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS
+        <br>Index  63 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS
+        <br>Index  64 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS
+        <br>Index  65 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS
+        <br>Index  66 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS
+        <br>Index  67 : queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS
+        <br>Index  68 : queryEUM_IFRAME_DOM_READY_TIME_MS
+        <br>Index  69 : queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS
+        <br>Index  70 : queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS
+        <br>Index  71 : queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS
+        <br>Index  72 : queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS
      * </p>
      */
     public MetricDatas getRESTEUMMetricQuery(int queryIndex, String application, String urlPath, long start, long end, boolean rollup){
@@ -1230,59 +1340,279 @@ public class RESTAccess {
                 break;
             case 4: 
                 // Agent query
-                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE(urlPath, start, end, rollup);
                 break;
             case 5: 
                 // Agent query
-                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_APPLICATION_SERVER_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 6: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_REQUESTS_PER_MIN(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME(urlPath, start, end, rollup);
                 break;
             case 7: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_DOC_READY_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 8: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;    
             case 9: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 10: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 11: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 12: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_FRONT_END_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 13: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 14: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 15: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             case 16: 
                 // Agent query
-                query=mq.queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS(urlPath, start, end, rollup);
+                query=mq.queryEUM_BASE_PAGES_FRONT_END_TIME_MS(urlPath, start, end, rollup);
                 break;
             case 17: 
                 // Agent query
+                query=mq.queryEUM_BASE_PAGES_PAGE_RENDER_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 18: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(urlPath, start, end, rollup);
+                break;
+            case 19: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_RESPONSE_AVAILABLE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 20: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_SERVER_CONNECTION_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 21: 
+                // Agent query
                 query=mq.queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(urlPath, start, end, rollup);
+                break;
+            case 22: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_REQUESTS_PER_MIN(urlPath, start, end, rollup);
+                break;
+            case 23: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOC_READY_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 24: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(urlPath, start, end, rollup);
+                break;
+            case 25: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(urlPath, start, end, rollup);
+                break;
+            case 26: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 27: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE(urlPath, start, end, rollup);
+                break;
+            case 28: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 29: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 30: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 31: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(urlPath, start, end, rollup);
+                break;
+            case 32: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 33: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 34: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 35: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 36: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 37: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 38: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 39: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 40: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 41: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOM_READY_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 42: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 43: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 44: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 45: 
+                // Agent query
+                query=mq.queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 46: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_FRONT_END_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 47: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOCUMENT_READY_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 48: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_TCP_CONNECT_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 49: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 50: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 51: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 52: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_PAGE_RENDER_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 53: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(urlPath, start, end, rollup);
+                break;
+            case 54: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 55: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 56: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 57: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_REQUESTS_PER_MINUTE(urlPath, start, end, rollup);
+                break;
+            case 58: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_FIRST_BYTE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 59: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 60: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 61: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 62: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 63: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 64: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 65: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 66: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 67: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 68: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOM_READY_TIME_MS(urlPath, start, end, rollup);
+                break;
+            case 69: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 70: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 71: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS(urlPath, start, end, rollup);
+                break;
+            case 72: 
+                // Agent query
+                query=mq.queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS(urlPath, start, end, rollup);
                 break;
             default:
                 
@@ -1422,7 +1752,7 @@ public class RESTAccess {
      * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
-     * @param tier Name of the tier which holds the metric
+     * @param backend Name of the backend which holds the metric
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
      * @return {@link MetricDatas}
@@ -1433,20 +1763,20 @@ public class RESTAccess {
      * <br/>Index  2 : queryBackendErrorsPerMinute
      * </p>
      */
-    public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String tier, long start, long end){
+    public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String backend, long start, long end){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex ")
-                    .append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+                    .append(queryIndex).append(" application ").append(application).append(" tier ").append(backend).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                query=mq.queryBackendAverageResponseTimeMS(application, tier, start, end, false);
+                query=mq.queryBackendAverageResponseTimeMS(application, backend, start, end, false);
                 break;
             case 1:
-                query=mq.queryBackendCallsPerMinute(application, tier, start, end, false);
+                query=mq.queryBackendCallsPerMinute(application, backend, start, end, false);
                 break;
             case 2:
-                query=mq.queryBackendErrorsPerMinute(application, tier, start, end, false);
+                query=mq.queryBackendErrorsPerMinute(application, backend, start, end, false);
                 break;
             default:
                 break;
@@ -1456,7 +1786,7 @@ public class RESTAccess {
         if(query==null){ 
             logger.log(Level.WARNING,new StringBuilder()
                     .append("\nQueryIndex sent ").append(queryIndex).append(" application ")
-                    .append(application).append(" tier ").append(tier).toString());
+                    .append(application).append(" tier ").append(backend).toString());
             return null;
         }
         
@@ -1473,7 +1803,7 @@ public class RESTAccess {
      * 
      * @param queryIndex Index of the type of query to run
      * @param application Name of the application which holds the metric
-     * @param tier Name of the tier which holds the metric
+     * @param backend Name of the backend which holds the metric
      * @param start Timestamp in milliseconds for the start time for the query
      * @param end Timestamp in milliseconds for the end time for the query
      * @param rollup Boolean determines whether to roll up the metrics
@@ -1486,20 +1816,20 @@ public class RESTAccess {
      * </p>
      * 
      */
-    public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String tier, long start, long end, boolean rollup){
+    public MetricDatas getRESTBackendMetricQuery(int queryIndex, String application, String backend, long start, long end, boolean rollup){
         String query=null;
         if(s.debugLevel >= 2){logger.log(Level.WARNING,new StringBuilder().append("\nQueryIndex ")
-                    .append(queryIndex).append(" application ").append(application).append(" tier ").append(tier).toString());}
+                    .append(queryIndex).append(" application ").append(application).append(" tier ").append(backend).toString());}
         MetricQuery mq = new MetricQuery( baseURL.getControllerURL(),application);
         switch(queryIndex){
             case 0:
-                query=mq.queryBackendAverageResponseTimeMS(application, tier, start, end, rollup);
+                query=mq.queryBackendAverageResponseTimeMS(application, backend, start, end, rollup);
                 break;
             case 1:
-                query=mq.queryBackendCallsPerMinute(application, tier, start, end, rollup);
+                query=mq.queryBackendCallsPerMinute(application, backend, start, end, rollup);
                 break;
             case 2:
-                query=mq.queryBackendErrorsPerMinute(application, tier, start, end, rollup);
+                query=mq.queryBackendErrorsPerMinute(application, backend, start, end, rollup);
                 break;
             default:
                 break;
@@ -1509,7 +1839,7 @@ public class RESTAccess {
         if(query==null){ 
             logger.log(Level.WARNING,new StringBuilder()
                     .append("\nQueryIndex sent ").append(queryIndex).append(" application ")
-                    .append(application).append(" tier ").append(tier).toString());
+                    .append(application).append(" tier ").append(backend).toString());
             return null;
         }
         

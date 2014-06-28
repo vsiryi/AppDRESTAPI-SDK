@@ -33,6 +33,25 @@ public class MetricDatas {
         this.metric_data = metric_data;
     }
     
+    
+    public MetricValue getSingleRollUpMetricValue(){
+        if(metric_data.size() > 0 && metric_data.get(0) != null 
+                && metric_data.get(0).getMetricValues().size() > 0 
+                && metric_data.get(0).getMetricValues().get(0).getMetricValue().size() > 0){
+            return metric_data.get(0).getMetricValues().get(0).getMetricValue().get(0);
+        }
+        return null;
+    }
+    
+    public ArrayList<MetricValue> getSingleMetricValues(){
+        if(metric_data.size() > 0 && metric_data.get(0) != null 
+                && metric_data.get(0).getMetricValues().size() > 0 
+                && metric_data.get(0).getMetricValues().get(0).getMetricValue().size() > 0){
+            return metric_data.get(0).getMetricValues().get(0).getMetricValue();
+        }
+        return null;
+    }
+    
     @Override
     public String toString(){
         StringBuilder bud = new StringBuilder();

@@ -119,6 +119,11 @@ public class s {
     public static final String MIN="min";
     public static final String MAX="max";
     public static final String CURRENT="current";
+    public static final String SUM="sum";
+    public static final String COUNT="count";
+    public static final String STD_DEVIATION="standardDeviation";
+    public static final String OCCURRENCES="occurrences";
+    public static final String USERANGE="useRange";
     
     public static final String TIERS="tiers";
     public static final String TIER="tier";
@@ -194,6 +199,18 @@ public class s {
     
     public static final String EUM_USER_EXPERIENCE="End User Experience|";
     public static final String EUM_AJAX_Requests="AJAX Requests|";
+
+    
+    public static final String EUM_APPLICATION_SERVER_TIME_MS="|Application Server Time (ms)";
+    public static final String EUM_APPLICATION_SERVER_CALLS_PER_MINUTE="|Application Server Calls per Minute";
+    public static final String EUM_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS="|End User Response Time 50th percentile (ms)";
+    public static final String EUM_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS="|End User Response Time 90th percentile (ms)";
+    public static final String EUM_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS="|End User Response Time 95th percentile (ms)";
+    public static final String EUM_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS="|End User Response Time 99th percentile (ms)";
+    public static final String EUM_FIRST_BYTE_TIME_50TH_PERCENTILE_MS="|First Byte Time 50th percentile (ms)";
+    public static final String EUM_FIRST_BYTE_TIME_90TH_PERCENTILE_MS="|First Byte Time 90th percentile (ms)";
+    public static final String EUM_FIRST_BYTE_TIME_95TH_PERCENTILE_MS="|First Byte Time 95th percentile (ms)";
+    public static final String EUM_FIRST_BYTE_TIME_99TH_PERCENTILE_MS="|First Byte Time 99th percentile (ms)";
     
     public static final String EUM_REQUESTS_PER_MIN="|Requests per Minute";
     public static final String EUM_AJAX_REQUEST_ERRORS_PER_MINUTE="|AJAX Request Errors per Minute";
@@ -202,6 +219,15 @@ public class s {
     public static final String EUM_END_USER_RESPONSE_TIME="|End User Response Time (ms)";
     public static final String EUM_FIRST_BYTE_TIME_MS="|First Byte Time (ms)";
     
+
+    public static final String EUM_TCP_CONNECT_TIME_MS="|TCP Connect Time (ms)";
+    public static final String EUM_DOM_READY_TIME_MS="|DOM Ready Time (ms)";
+    public static final String EUM_DOM_READY_TIME_50TH_PERCENTILE_MS="|DOM Ready Time 50th percentile (ms)";
+    public static final String EUM_DOM_READY_TIME_90TH_PERCENTILE_MS="|DOM Ready Time 90th percentile (ms)";
+    public static final String EUM_DOM_READY_TIME_95TH_PERCENTILE_MS="|DOM Ready Time 95th percentile (ms)";
+    public static final String EUM_DOM_READY_TIME_99TH_PERCENTILE_MS="|DOM Ready Time 99th percentile (ms)";
+    public static final String EUM_DOMAIN_LOOKUP_TIME="|Domain Lookup Time (ms)";
+    public static final String EUM_SSL_HANDSHAKE_TIME_MS="|SSL Handshake Time (ms)";
     public static final String EUM_BASE_PAGES="Base Pages|";
     public static final String EUM_DOCUEMENT_READY_TIME_MS="|Document Ready Time (ms)";
     public static final String EUM_FRONT_END_TIME_MS="|Front End Time (ms)";

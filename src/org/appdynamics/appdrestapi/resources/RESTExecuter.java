@@ -99,13 +99,15 @@ public class RESTExecuter {
         ClientResponse response = null;
         MetricDatas md = null;
         try{
-            int currentCount=0;
-            while(currentCount < s.MAX_TRIES){
+            int currentCount=1;
+            while(currentCount <= s.MAX_TRIES){
             response = service.accept(MediaType.APPLICATION_XML).get(ClientResponse.class);
                 if(response.getStatus() >= 500){
-                    logger.log(Level.INFO,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus()).append(", attempting again").toString());
+                    logger.log(Level.INFO,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus())
+                            .append(", attempting again from attempt number ").append(currentCount).toString());
+                    
                     currentCount++;
-                    Thread.sleep(1200);
+                    Thread.sleep(1200*currentCount);
                 }else{
                     md = (MetricDatas) response.getEntity(MetricDatas.class);
                     if(md == null){ 
@@ -114,6 +116,10 @@ public class RESTExecuter {
                     else{currentCount=s.MAX_TRIES+1;}
                 }
             }
+            
+            if(response.getStatus() >= 500 && currentCount > s.MAX_TRIES) 
+                logger.log(Level.SEVERE,new StringBuilder().append("Caught HTTP error number ").append(response.getStatus())
+                            .append(".\nUnable to get a proper response for query:\n").append(query).toString());
             
         }catch(Exception e){
             logger.log(Level.SEVERE,new StringBuilder().append("Exception getting entity. \nQuery:\n\t")

@@ -7,24 +7,42 @@ package org.appdynamics.appdrestapi.data;
 
 import org.appdynamics.appdrestapi.resources.s;
 
-import javax.xml.bind.annotation.XmlRootElement;
+
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+
 
 /**
  *
  * @author soloink
+ * 
+ *
+<metric-value>
+<startTimeInMillis>1403903580000</startTimeInMillis>
+<value>0</value>
+<min>0</min>
+<max>3</max>
+<current>0</current>
+<sum>2168</sum>
+<count>5390</count>
+<standardDeviation>0.0</standardDeviation>
+<occurrences>0</occurrences>
+<useRange>true</useRange>
+</metric-value>
+ * 
  */
 public class MetricValue {
     
-    private long current;
-    private long max;
-    private long min;
     private long startTimeInMillis;
     private long value;
+    private long min;
+    private long max;
+    private long current;
+    // Available 3.8
+    private long sum=-1;
+    private long count=-1;
+    private double stdDev=-1.0;
+    private long occurrences=-1;
+    private boolean useRange;
 
     public MetricValue(){}
     
@@ -72,17 +90,68 @@ public class MetricValue {
     public void setValue(long value) {
         this.value = value;
     }
+
+    public long getSum() {
+        return sum;
+    }
+
+    @XmlElement(name=s.SUM)
+    public void setSum(long sum) {
+        this.sum = sum;
+    }
+
+    public long getCount() {
+        return count;
+    }
+
+    @XmlElement(name=s.COUNT)
+    public void setCount(long count) {
+        this.count = count;
+    }
+
+    public double getStdDev() {
+        return stdDev;
+    }
+
+    @XmlElement(name=s.STD_DEVIATION)
+    public void setStdDev(double stdDev) {
+        this.stdDev = stdDev;
+    }
+
+    public long getOccurrences() {
+        return occurrences;
+    }
+
+    @XmlElement(name=s.OCCURRENCES)
+    public void setOccurrences(long occurrences) {
+        this.occurrences = occurrences;
+    }
+
+    public boolean isUseRange() {
+        return useRange;
+    }
+    @XmlElement(name=s.USERANGE)
+    public void setUseRange(boolean useRange) {
+        this.useRange = useRange;
+    }
+    
+    
     
     @Override
     public String toString(){
         StringBuilder bud = new StringBuilder();
-        bud.append("\tCurrent ::").append(current).append("\n");
-        bud.append("\tValue :: ").append(value).append("\n");
-        bud.append("\tMin :: ").append(min).append("\n");
-        bud.append("\tMax :: ").append(max).append("\n");
-        bud.append("\tTimestamp :: ").append(startTimeInMillis).append("\n");
-        bud.append("\tDateTime :: ").append(new java.util.Date(startTimeInMillis).toString()).append("\n");
-        bud.append("\t ------------------------- End ------------------------------\n");
+        bud.append("\n\tCurrent ::").append(current);
+        bud.append("\n\tValue :: ").append(value);
+        bud.append("\n\tMin :: ").append(min);
+        bud.append("\n\tMax :: ").append(max);
+        if(sum != -1)bud.append("\n\tSum :: ").append(sum);
+        if(count != -1)bud.append("\n\tCount :: ").append(count);
+        if(stdDev != -1.0) bud.append("\n\tStd Dev :: ").append(stdDev);
+        if(occurrences != -1) bud.append("\n\tOccurrences :: ").append(occurrences);
+        bud.append("\n\tUse Range :: ").append(useRange);
+        bud.append("\n\tTimestamp :: ").append(startTimeInMillis);
+        bud.append("\n\tDateTime :: ").append(new java.util.Date(startTimeInMillis).toString());
+        bud.append("\n\t ------------------------- End ------------------------------\n");
         
         
         return bud.toString();

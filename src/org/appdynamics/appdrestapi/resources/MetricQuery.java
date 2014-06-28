@@ -469,38 +469,56 @@ public class MetricQuery {
         return EUMMetricQuery.queryEUM_AJAX_DOC_PROCESSING_TIME(baseURL, application, urlPath, start, end, rollup);
     }
     
+    public String queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_APPLICATION_SERVER_CALLS_PER_MINUTE(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_APPLICATION_SERVER_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_APPLICATION_SERVER_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
     public String queryEUM_AJAX_END_USER_RESPONSE_TIME(String urlPath, long start, long end, boolean rollup){
         return EUMMetricQuery.queryEUM_AJAX_END_USER_RESPONSE_TIME(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
     }
     
     public String queryEUM_AJAX_FIRST_BYTE_TIME_MS(String urlPath, long start, long end, boolean rollup){
         return EUMMetricQuery.queryEUM_AJAX_FIRST_BYTE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
     }
     
+    public String queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_AJAX_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    
     /* EUM BASE PAGES */
-    public String queryEUM_BASE_PAGES_REQUESTS_PER_MIN(String urlPath, long start, long end, boolean rollup){
-        return EUMMetricQuery.queryEUM_BASE_PAGES_REQUESTS_PER_MIN(baseURL, application, urlPath, start, end, rollup);
-    }
-    
-    public String queryEUM_BASE_PAGES_DOC_READY_TIME_MS(String urlPath, long start, long end, boolean rollup){
-        return EUMMetricQuery.queryEUM_BASE_PAGES_DOC_READY_TIME_MS(baseURL, application, urlPath, start, end, rollup);
-    }
-    
-    public String queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(String urlPath, long start, long end, boolean rollup){
-        return EUMMetricQuery.queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(baseURL, application, urlPath, start, end, rollup);
-    }
-    
-    public String queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(String urlPath, long start, long end, boolean rollup){
-        return EUMMetricQuery.queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(baseURL, application, urlPath, start, end, rollup);
-    }
-    
-    public String queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(String urlPath, long start, long end, boolean rollup){
-        return EUMMetricQuery.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(baseURL, application, urlPath, start, end, rollup);
-    }
-    
-    public String queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(String urlPath, long start, long end, boolean rollup){
-        return EUMMetricQuery.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
-    }
     
     public String queryEUM_BASE_PAGES_FRONT_END_TIME_MS(String urlPath, long start, long end, boolean rollup){
         return EUMMetricQuery.queryEUM_BASE_PAGES_FRONT_END_TIME_MS(baseURL, application, urlPath, start, end, rollup);
@@ -525,6 +543,211 @@ public class MetricQuery {
     public String queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(String urlPath, long start, long end, boolean rollup){
         return EUMMetricQuery.queryEUM_BASE_PAGES_SYNTHETIC_REQUESTS_PER_MINUTE(baseURL, application, urlPath, start, end, rollup);
     }
+    
+    public String queryEUM_BASE_PAGES_REQUESTS_PER_MIN(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_REQUESTS_PER_MIN(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOC_READY_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOC_READY_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOC_DOWNLOAD_TIME(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOC_PROCESSING_TIME(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_TCP_CONNECT_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_APPLICATION_SERVER_CALLS_PER_MINUTE(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_SSL_HANDSHAKE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_APPLICATION_SERVER_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOMAIN_LOOKUP_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOM_READY_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOM_READY_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOM_READY_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOM_READY_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOM_READY_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_BASE_PAGES_DOM_READY_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_FRONT_END_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_FRONT_END_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOCUMENT_READY_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOCUMENT_READY_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_TCP_CONNECT_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_TCP_CONNECT_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOMAIN_LOOKUP_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_RESPONSE_AVAILABLE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_SERVER_CONNECTION_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_PAGE_RENDER_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_PAGE_RENDER_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_PAGE_VIEWS_WITH_JAVASCRIPT_ERRORS_PER_MINUTE(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOCUMENT_DOWNLOAD_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOCUMENT_PROCESSING_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_SSL_HANDSHAKE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_REQUESTS_PER_MINUTE(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_REQUESTS_PER_MINUTE(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_FIRST_BYTE_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_FIRST_BYTE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_FIRST_BYTE_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_FIRST_BYTE_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_FIRST_BYTE_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_FIRST_BYTE_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_END_USER_RESPONSE_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_END_USER_RESPONSE_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_END_USER_RESPONSE_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_END_USER_RESPONSE_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_END_USER_RESPONSE_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOM_READY_TIME_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOM_READY_TIME_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOM_READY_TIME_50TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOM_READY_TIME_90TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOM_READY_TIME_95TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
+    public String queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS(String urlPath, long start, long end, boolean rollup){
+        return EUMMetricQuery.queryEUM_IFRAME_DOM_READY_TIME_99TH_PERCENTILE_MS(baseURL, application, urlPath, start, end, rollup);
+    }
+    
     
     /*
      *  ***********************************************************************
