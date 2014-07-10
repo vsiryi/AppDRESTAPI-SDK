@@ -129,11 +129,11 @@ public class RESTExecuter {
         
         
         
-        if(s.debugLevel > 1){
+        if(s.debugLevel > 1 && md != null){
             logger.log(Level.INFO,new StringBuilder().append("Number of metrics datas returns is ").append(md.getMetric_data().size()).toString());
         }
         
-        if(s.debugLevel > 2) logger.log(Level.FINE,new StringBuilder().append(md.toString()).toString());
+        if(s.debugLevel > 2 && md != null) logger.log(Level.FINE,new StringBuilder().append(md.toString()).toString());
         return md;
     }
     
@@ -328,11 +328,11 @@ public class RESTExecuter {
                     .append(response.getStatus()).toString());
         } 
         
-        if(s.debugLevel > 1){
+        if(s.debugLevel > 1 && evs != null){
             logger.log(Level.INFO,new StringBuilder().append("Number of events returns is ").append(evs.getEvents().size()).toString());
         }
         
-        if(s.debugLevel > 2) logger.log(Level.FINE,new StringBuilder().append(evs.toString()).toString());
+        if(s.debugLevel > 2 && evs != null) logger.log(Level.FINE,new StringBuilder().append(evs.toString()).toString());
         
         return evs;
     }

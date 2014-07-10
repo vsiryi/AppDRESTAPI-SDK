@@ -536,10 +536,14 @@ public class RESTAccess {
      * @return {@link Events}
      */
     public Events getEvents(String application, String eventTypes, String severities, long start, long end){
+        StringBuilder bud = new StringBuilder();
         try{
-            return RESTExecuter.executeEvents(auth, EventsQuery.queryPolicyViolationsSFromApps(baseURL.getControllerURL(), application, eventTypes, severities, start, end));
+            bud.append("\nCreating the query::");
+            String query=EventsQuery.queryPolicyViolationsSFromApps(baseURL.getControllerURL(), application, eventTypes, severities, start, end);
+            bud.append("\nBuiltQuery::").append(query);
+            return RESTExecuter.executeEvents(auth, query);
         }catch(Exception e){
-            StringBuilder bud = new StringBuilder();
+            bud.append("\nAuth::").append(auth.toString());
             bud.append("\nApplication::").append(application).append("\nEventTypes::").append(eventTypes);
             bud.append("\nSeverities::").append(severities).append("\nStartTime::").append(start);
             bud.append("\nEndTime::").append(end);
