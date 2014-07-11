@@ -543,7 +543,6 @@ public class RESTAccess {
             bud.append("\nBuiltQuery::").append(query);
             return RESTExecuter.executeEvents(auth, query);
         }catch(Exception e){
-            bud.append("\nAuth::").append(auth.toString());
             bud.append("\nApplication::").append(application).append("\nEventTypes::").append(eventTypes);
             bud.append("\nSeverities::").append(severities).append("\nStartTime::").append(start);
             bud.append("\nEndTime::").append(end);
