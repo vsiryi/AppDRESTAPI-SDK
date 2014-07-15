@@ -309,16 +309,15 @@ public class RESTExecuter {
     }
     
     public static Events executeEvents(RESTAuth auth, String query){
+        
         if(client == null) {
             createConnection(auth);
         }
 
         
-        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("Query:\n").append(query).toString());
+        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("\nexecuteEvents Query:\n").append(query).toString());
         
         WebResource service = client.resource(query);
-        
-        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("WebResource: ").append(service.toString()).toString());
         
         ClientResponse response = null;
         Events evs=null;
@@ -331,18 +330,12 @@ public class RESTExecuter {
                     .append(query).append("\nError:").append(e.getMessage()).append(". Response code ")
                     .append(response.getStatus()).toString());
         } 
-        
-        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("\nWe executed the whole query without exception").toString());
-        
+          
         if(s.debugLevel > 1 && evs != null ){
             logger.log(Level.INFO,new StringBuilder().append("Number of events returns is ").append(evs.getEvents().size()).toString());
         }
         
-        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("\nFirst debug message was executed. ").toString());
-        
         if(s.debugLevel > 2 && evs != null) logger.log(Level.FINE,new StringBuilder().append(evs.toString()).toString());
-        
-        if(s.debugLevel > 1 ) logger.log(Level.INFO,new StringBuilder().append("\nPast the debug stuff, returning. ").toString());
         
         return evs;
     }

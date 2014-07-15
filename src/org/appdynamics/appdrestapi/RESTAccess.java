@@ -111,7 +111,8 @@ public class RESTAccess {
         try{
             return RESTExecuter.executeApplicationQuery(auth, ApplicationQuery.queryAllApplications(baseURL.getControllerURL()));
         }catch(Exception e){
-            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n").append(e.getMessage()).append("\n").toString());
+            logger.log(Level.SEVERE,new StringBuilder().append("Exception occurred executing REST query::\n")
+                    .append(e.getMessage()).append("\n").toString());
         }
         return null;
     }
