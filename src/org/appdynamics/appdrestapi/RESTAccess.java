@@ -102,6 +102,10 @@ public class RESTAccess {
     public void setDebugLevel(int level){
         if(level >= 0 || level < 4) s.debugLevel=level;
     }
+
+    public void setSslProtocol(String protocol){
+        RESTExecuter.setSslProtocol(protocol);
+    }
     
     /**
      * 

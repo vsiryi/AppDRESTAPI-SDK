@@ -5,9 +5,6 @@
 package org.appdynamics.appdrestapi.resources;
 
 import org.appdynamics.appdrestapi.data.*;
-import org.appdynamics.appdrestapi.resources.ApplicationQuery;
-import org.appdynamics.appdrestapi.resources.AppExportS;
-
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -15,8 +12,8 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
-import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.client.urlconnection.HTTPSProperties;
+
 import javax.ws.rs.core.MediaType;
 
 
@@ -26,7 +23,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
@@ -44,8 +40,9 @@ import java.util.logging.Level;
 public class RESTExecuter {
     static ClientConfig config = null;
     static Client client=null;
+    static String protocol = "TLS";
     private static Logger logger=Logger.getLogger(RESTExecuter.class.getName());
-    
+
     private static void createConnection(RESTAuth auth){
         config = new DefaultClientConfig();
         //new code
@@ -66,14 +63,12 @@ public class RESTExecuter {
         
         SSLContext ctx = null;
         try{
-            ctx = SSLContext.getInstance("TLS");
+            ctx = SSLContext.getInstance(protocol);
             ctx.init(null, certs, new SecureRandom());
         }catch(java.security.GeneralSecurityException ex){
             logger.log(Level.INFO,new StringBuilder().append("Exception ocurred while attempting to setup all trusting SSL security. ").toString());
         }
-        
-        HttpsURLConnection.setDefaultSSLSocketFactory(ctx.getSocketFactory());
-        
+
         try{
             config.getProperties().put(HTTPSProperties.PROPERTY_HTTPS_PROPERTIES, new HTTPSProperties(
                     new HostnameVerifier(){
@@ -88,7 +83,11 @@ public class RESTExecuter {
         client = Client.create(config);
         client.addFilter(new HTTPBasicAuthFilter(auth.getUserNameForAuth(),auth.getPasswd()));
     }
-    
+
+    public static void setSslProtocol(String protocol){
+        RESTExecuter.protocol = protocol;
+    }
+
     public static MetricDatas executeMetricQuery(RESTAuth auth, String query){
         if(client == null) {
             createConnection(auth);
@@ -143,7 +142,6 @@ public class RESTExecuter {
             createConnection(auth);
         }
 
-        
         if(s.debugLevel > 2)logger.log(Level.INFO,new StringBuilder().append("Using the following for auth: ").append(auth.toString()).toString());
         WebResource service = null;
         ClientResponse response = null;
@@ -167,7 +165,6 @@ public class RESTExecuter {
             createConnection(auth);
         }
 
-        
         if(s.debugLevel > 2)logger.log(Level.INFO,new StringBuilder().append("Using the following for auth: ").append(auth.toString()).toString());
         WebResource service = null;
         ClientResponse response = null;
@@ -211,6 +208,7 @@ public class RESTExecuter {
             apps= (Applications) response.getEntity(Applications.class);
             
         }catch(Exception e){
+            e.printStackTrace();
             logger.log(Level.SEVERE,new StringBuilder().append("Exception getting entity: \nQuery:\n\t")
                     .append(query).append("\nError:").append(e.getMessage()).append(".\nResponse code is ").append(response.getStatus()).toString());
         }
